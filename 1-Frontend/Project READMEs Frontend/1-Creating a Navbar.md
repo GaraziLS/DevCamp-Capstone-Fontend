@@ -1,0 +1,388 @@
+# Intro
+
+This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone.
+
+## First Steps: Building a Navbar
+
+To start off, we'll build a skeleton for the navbar. Inside the **src > Components** we'll create a new folder called **project_components**, where all of our components will be. Inside, we'll create a file named **navbar.js**. This component will be a functional component since it only renders content (the navlinks in this case, plus a searchbar and a login button). We'll also add classes to style everything later on, and since we're rendering navlinks we'll first need to import a few dependencies. So, for now, we should have this:
+
+```
+import React from 'react';
+import {BrowserRouter as  Router, Switch, Route } from "react-router-dom"
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+
+export default function() {
+    return(
+    <div className='navbar-wrapper'>
+        <div className='navlink-wrapper'>
+            <h1>Links go there</h1>
+        </div>
+
+        <div className='search-wrapper'>
+            <div className='search-bar'>
+                <input 
+                    type='text'
+                    placeholder='Search generators'
+                    >
+                </input>
+            </div>
+
+        <div className='login'>
+            <button>Sign up / Log in</button>
+        </div>
+            
+
+        </div>
+
+    </div>
+    </div>
+);
+}
+```
+
+Now we'll import this from the **app.js** file to render it on screen:
+
+```
+import React, { Component } from 'react';
+import Navbar from "./project_components/navbar"
+
+export default class App extends Component {
+  render() {
+    return (
+      <div className='app'>
+        <Navbar/>
+      </div>
+    );
+  }
+}
+```
+
+### Adding Routes
+
+We'll now add the routes to the navlinks in the **app.js** file. We'll later connect those with the actual links in the navbar in order to jump between them, but before proceeding we'll first add another folder inside the src > component called **pages**. Here's where the different website pages will be.
+
+Now that we have the pages folder we can start adding the routes in the **app.js** file. In order for them to work, we need some dependencies, as well as to import our pages. So we should get this:
+
+```
+import React, { Component } from 'react';
+import {BrowserRouter as  Router, Switch, Route } from "react-router-dom";
+
+import Home from "./pages/homepage";
+import WhatsThis from "./pages/whats-this";
+import CreatePage from "./pages/create";
+import ErrorPage from "./pages/error-page"
+```
+
+Now we'll add the routes, and pass in each page component (that we previously imported):
+
+```
+export default class App extends Component {
+  render() {
+    return (
+      <div className='app'>
+
+        <Router>
+        <Navbar/>
+
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/whats-this" component={WhatsThis}/>
+            <Route exact path="/create" component={CreatePage}/>
+            <Route component={ErrorPage}/>
+          </Switch>
+
+        </Router>
+        
+      </div>
+    );
+  }
+}
+
+```
+
+Note that the last item doesn't have a path. That's because if no path is provided, or if a wrong one is entered, this will be the default page. In other words, this is what will pop up if there's an error. We also moved the Navbar component inside the router to avoid issues. In order to make the actual links work, we'll now go back to the **navbar.js** file to add the navlinks. We'll also add class names to style them later.
+
+```
+<div className='navbar-wrapper'>
+    <div className='navlink-wrapper'>
+        <NavLink exact to="/" className="link" activeClassName="active-link">Home</NavLink>
+        <NavLink exact to="/whats-this" className="link" activeClassName="active-link">What's this?</NavLink>
+        <NavLink exact to="/create" className="link" activeClassName="active-link">Create</NavLink>
+```
+
+Now that the links work, it's time to give styles. 
+
+### Giving styles to the Navbar
+
+We already added classes to give styles (remember that the styles folder is in **src > style**, we will put all of our styles there.)
+
+We already have a file inside the styles folder called **main.scss**. Here we'll import all the stylesheets, so we'll begin by creating four more files (one for the navbar, one for the general styles for the entire app and one for mixins -reusable pieces of css code-, and one for storing our color codes as variables) that will be imported by the main.scss file:
+
+```
+@import "../style/variables.scss";
+@import "../style/base-styles.scss";
+@import "../style/mixins.scss";
+```
+
+And the variables and the styles for the entire app go like this:
+
+```
+* {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+```
+
+```
+$SunnyYellow: #F4C522;
+$MainColor: #03153B;
+$HoverBlue: #3676BD;
+$SearchBar: #F3E7BA;
+$TextFields: #D7DAE1;
+```
+
+Now we're ready to start giving styles, including media queries to make the site responsive, so we'll create a scss file named **navbar.scss**.
+
+The navbar wrapper is a grid, and each of the elements inside it is a flex container to ease positioning.
+
+```
+/* MEDIA QUERIES FOR MOBILE */
+
+@media (max-width: 425px) {
+
+    .navbar-wrapper {
+        background-color: $SunnyYellow;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .navlink-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            .link {
+                @include link-style;
+                font-size: 15px;
+            }
+
+            .active-link {
+                @include active-link;
+            }
+
+        }
+
+        .search-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 15px;
+
+            .search-bar>input {
+                background-color: $SearchBar;
+                border: none;
+                padding: 5px;
+            }
+
+            input:focus {
+                outline: solid 2px $MainColor
+            }
+
+            input::placeholder {
+                text-align: center;
+                color: $MainColor;
+            }
+
+        }
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+
+            button {
+                @include button-style;
+                padding: 5px;
+
+                .link {
+                    @include link-style;
+                    color: white;
+
+                    &:hover {
+                        color: $MainColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* MEDIA QUERIES FOR DESKTOP */
+
+@media (min-width: 425px) {
+
+    .navbar-wrapper {
+        background-color: $SunnyYellow;
+        height: 50px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .navlink-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 20px;
+            gap: 20px;
+
+            .link {
+                @include link-style;
+                font-size: 15px;
+            }
+
+            .active-link {
+                @include active-link;
+            }
+
+        }
+
+        .search-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .search-bar>input {
+                background-color: $SearchBar;
+                border: none;
+                padding: 5px;
+            }
+
+            input:focus {
+                outline: solid 2px $MainColor
+            }
+
+            input::placeholder {
+                text-align: center;
+                color: $MainColor;
+            }
+
+        }
+
+        .login {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+
+            button {
+                @include button-style;
+
+                .link {
+                    @include link-style;
+                    color: white;
+
+                    &:hover {
+                        color: $MainColor;
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+As of mixins, they're as follows:
+
+```
+@mixin link-style {
+    text-decoration: none;
+    color: $MainColor;
+
+    &:hover {
+        color: $HoverBlue
+    }
+}
+
+@mixin active-link {
+    color: $HoverBlue;
+    border-bottom: 1px solid $HoverBlue;
+}
+
+@mixin button-style {
+    background-color: $MainColor;
+    color: white;
+    padding: 8px;
+    border: none;
+
+    &:hover {
+        background-color: $HoverBlue;
+        color: $MainColor
+    }
+}
+```
+
+Now the navbar is finished and is fully responsive.
+
+## Adding Icons
+
+Let's add a few icons to the app. To do this, we'll import Font Awesome in a dedicated file. In the src folder we'll create a new folder called **helpers**, and inside of it we'll create a file called **icons.js**. After installing Font Awesome (by writing ``npm i font-awesome`` in the terminal -don't forget to switch to the project folder-), we'll type this in our **icons.js** file:
+
+```
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faIconName, faIconName (...) } from "@fortawesome/free-solid-svg-icons";
+```
+
+In the last import we'll write the codes of the Font Awesome Icons. Then, we need to add them to the library. We're in a separate file, so we'll use a const. I've put all of the icons I'll be using, so some of them won't be used till much later: 
+
+```
+const Icons = () => {
+    library.add(faTrash, faSignOutAlt, faHome, faMagnifyingGlass, faEdit, faSpinner);
+}
+```
+
+Now, we have to export this:
+
+```
+export default Icons;
+```
+
+And import it in the **app.js** file:
+
+```
+import Icons from "../helpers/icons"
+```
+
+We'll call the Icons() method inside the constructor. Now, we can go to the **navbar.js** file, import the icon, and place it, but first we have to import Font Awesome:
+
+```
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+```
+
+Now, we can place icons where we want. To do so we must call the FontAwesome component and pass in icon props. The structure is like this:
+
+```
+<FontAwesomeIcon icon="icon-name"/>
+```
+
+
+## Creating an API
+
+We need an API to continue with the project, so before proceeding we'll create one. Go to the Backend folder and search for the Project READMEs to know how to create one.
+
+
+
+
+
+

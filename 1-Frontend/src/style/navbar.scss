@@ -1,0 +1,160 @@
+/* MEDIA QUERIES FOR MOBILE */
+
+@media (max-width: 425px) {
+
+    .navbar-wrapper {
+        background-color: $SunnyYellow;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .navlink-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            .link {
+                @include link-style;
+                font-size: 15px;
+            }
+
+            .active-link {
+                @include active-link;
+            }
+
+        }
+
+        .search-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding-top: 15px;
+            gap: 3px;
+
+            .search-field>input {
+                background-color: $SearchBar;
+                border: none;
+                padding: 5px;
+            }
+
+            input:focus {
+                outline: solid 2px $MainColor
+            }
+
+            input::placeholder {
+                text-align: center;
+                color: $MainColor;
+            }
+
+        }
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+
+            button {
+                @include button-style;
+                padding: 5px;
+
+                .link {
+                    @include link-style;
+                    color: white;
+
+                    }
+                }
+            }
+        }
+    }
+
+
+/* MEDIA QUERIES FOR DESKTOP */
+
+@media (min-width: 425px) {
+
+    .navbar-wrapper {
+        background-color: $SunnyYellow;
+        height: 50px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .navlink-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 20px;
+            gap: 20px;
+
+            .link {
+                @include link-style;
+                font-size: 15px;
+            }
+
+            .active-link {
+                @include active-link;
+            }
+
+        }
+
+        .search-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+
+            .search-field>input {
+                background-color: $SearchBar;
+                border: none;
+                padding: 5px;
+                width: 150%;
+                align-self: flex-start;
+            }
+
+            input:focus {
+                outline: solid 2px $MainColor
+            }
+
+            input::placeholder {
+                text-align: center;
+                color: $MainColor;
+            }
+
+        }
+
+        .login {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+
+            button {
+                @include button-style;
+
+                .link {
+                    @include link-style;
+                    color: white;
+
+                    &:hover {
+                        color: $BackgroundWhite
+                    }
+                }
+
+                .login > .link > .user-icon {
+                    color: #EBEBEB;
+                    &:hover {
+                        color: #EBEBEB;
+                    }
+                }
+            }
+        }
+    }
+}
