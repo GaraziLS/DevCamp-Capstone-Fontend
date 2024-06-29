@@ -13,13 +13,13 @@ export default function () {
             </div>
 
             <div className='search-wrapper'>
-
                 <div className='search-field'>
                     <input
                         type='text'
                         placeholder='Search generators'
                     >
                     </input>
+                    <button><FontAwesomeIcon icon="magnifying-glass"/> Search</button>
                 </div>
             </div>
 
