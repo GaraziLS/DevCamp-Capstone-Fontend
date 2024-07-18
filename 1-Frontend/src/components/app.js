@@ -5,7 +5,7 @@ import Home from "./pages/homepage";
 import WhatsThis from "./pages/whats-this";
 import CreatePage from "./pages/create";
 import ErrorPage from "./pages/error-page";
-import LoginPage from "./pages/login"
+import AuthPage from "./pages/auth"
 
 import Navbar from "./project_components/navbar";
 import Icons from "../helpers/icons"
@@ -29,7 +29,7 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/whats-this" component={WhatsThis} />
             <Route exact path="/create" component={CreatePage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/auth" component={AuthPage} />
             <Route component={ErrorPage} />
           </Switch>
 

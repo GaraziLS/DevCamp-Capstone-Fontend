@@ -27,7 +27,7 @@ export default function() {
                 </input>
             </div>
 
-        <div className='login'>
+        <div className='auth'>
             <button>Sign up / Log in</button>
         </div>
             
@@ -71,6 +71,7 @@ import Home from "./pages/homepage";
 import WhatsThis from "./pages/whats-this";
 import CreatePage from "./pages/create";
 import ErrorPage from "./pages/error-page"
+import AuthPage from "./pages/auth"
 ```
 
 Now we'll add the routes, and pass in each page component (that we previously imported):
@@ -88,6 +89,7 @@ export default class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route exact path="/whats-this" component={WhatsThis}/>
             <Route exact path="/create" component={CreatePage}/>
+            <Route exact path="/auth" component={AuthPage} />
             <Route component={ErrorPage}/>
           </Switch>
 
@@ -110,7 +112,25 @@ Note that the last item doesn't have a path. That's because if no path is provid
         <NavLink exact to="/create" className="link" activeClassName="active-link">Create</NavLink>
 ```
 
-Now that the links work, it's time to give styles. 
+Now that the links work, it's time to give styles. But first, we'll add the search bar and the login/sign up button.
+
+```
+<div className='search-wrapper'>
+                <div className='search-field'>
+                    <input
+                        type='text'
+                        placeholder='Search generators'
+                    >
+                    </input>
+                    <button><FontAwesomeIcon icon="magnifying-glass"/> Search</button>
+                </div>
+            </div>
+
+            <div className='auth'>
+                <button><NavLink exact to="/auth" className="link"><FontAwesomeIcon icon="circle-user"/> Sign up / Log in </NavLink></button>
+            </div>
+        </div>
+```
 
 ### Giving styles to the Navbar
 
@@ -172,6 +192,7 @@ Now, we can place icons where we want. To do so we must call the FontAwesome com
 <FontAwesomeIcon icon="icon-name"/>
 ```
 
+To test that everything's going right, go to the project folder and type ``npm run start``.
 
 ## Creating an API
 

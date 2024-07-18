@@ -23,8 +23,8 @@ export default function () {
                 </div>
             </div>
 
-            <div className='login'>
-                <button><NavLink exact to="/login" className="link"><FontAwesomeIcon icon="circle-user"/> Sign up / Log in </NavLink></button>
+            <div className='auth'>
+                <button><NavLink exact to="/auth" className="link"><FontAwesomeIcon icon="circle-user"/> Sign up / Log in </NavLink></button>
             </div>
         </div>
     );
