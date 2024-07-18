@@ -86,11 +86,12 @@ export default class App extends Component {
         <Navbar/>
 
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/whats-this" component={WhatsThis}/>
-            <Route exact path="/create" component={CreatePage}/>
-            <Route exact path="/auth" component={AuthPage} />
-            <Route component={ErrorPage}/>
+           <Route exact path="/" component={Home} />
+            <Route exact path="/whats-this" component={WhatsThis} />
+            <Route exact path="/create" component={CreatePage} />
+            <Route exact path="/signup" component={SignupPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route component={ErrorPage} />
           </Switch>
 
         </Router>
@@ -126,8 +127,9 @@ Now that the links work, it's time to give styles. But first, we'll add the sear
                 </div>
             </div>
 
-            <div className='auth'>
-                <button><NavLink exact to="/auth" className="link"><FontAwesomeIcon icon="circle-user"/> Sign up / Log in </NavLink></button>
+             <div className='auth-wrapper'>
+                <button><NavLink exact to="/signup" className="link signup"><FontAwesomeIcon icon="map"/> Sign up </NavLink></button>
+                <button><NavLink exact to="/login" className="link login"><FontAwesomeIcon icon="circle-user"/> Log in </NavLink></button>
             </div>
         </div>
 ```
@@ -164,7 +166,7 @@ In the last import we'll write the codes of the Font Awesome Icons. Then, we nee
 
 ```
 const Icons = () => {
-    library.add(faHouse, faMagnifyingGlass, faWandMagicSparkles, faTrash, faPenToSquare, faCircleInfo, faSpinner, faCircleUser);
+    library.add(faHouse, faMagnifyingGlass, faWandMagicSparkles, faTrash, faPenToSquare, faCircleInfo, faSpinner, faCircleUser, faMap);
 }
 ```
 

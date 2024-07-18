@@ -1,6 +1,7 @@
 @mixin link-style {
     text-decoration: none;
     color: $MainColor;
+    cursor: pointer;
 
     &:hover {
         color: $HoverBlue;
