@@ -1,9 +1,10 @@
 import React from 'react';
+import ItemContainer from '../project_components/Site Container/item-container';
 
 export default function() {
     return(
     <div>
-        <h1>Homepage</h1>
+        
     </div>
 );
 }
