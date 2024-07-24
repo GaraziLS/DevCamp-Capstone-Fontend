@@ -58,7 +58,7 @@ Now, we'll add more params to each input because we need to keep track of the va
 
 ## Change handler
 
-Now we're going to create the handleLoginChange, which will update the state when the user types something in. We'll create that below the constructor.
+Now we're going to create the handleLoginChange, which will update the state when the user types something in. We'll create that below the constructor. This will allow the user to type content in, otherwise won't be possible.
 
 ```
 handleLoginChange(event) {
@@ -98,4 +98,30 @@ export default class LoginComponent extends Component {
 
 ## Submit handler
 
-Remember the handleSubmit method of the submit button? We'll work on that now. The handler will be above the Change handler, and we'll bind that as well.
+Remember the handleSubmit method of the form? We'll work on that now. The handler will be above the Change handler, and we'll bind that as well.
+
+```
+this.handleSubmit = this.handleSubmit.bind(this);
+
+handleSubmit(event) {
+        event.preventDefault()
+    }
+```
+
+## Connecting to the API
+
+We need to connect to the backend in order to log in or sign up. To do so, we need axios, so we'll import it.
+
+```
+import axios from "axios"
+```
+
+We'll add the following lines to the handleSubmit method:
+
+```
+axios.post('localhost:5000/login',
+        { withCredentials: true }
+    ).then(response => {
+        console.log('response', response);
+    })
+```

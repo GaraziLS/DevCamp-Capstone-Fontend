@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios"
 
 export default class LoginComponent extends Component {
     constructor(props) {
@@ -17,6 +18,17 @@ export default class LoginComponent extends Component {
         // Handlers
 
     handleSubmit(event) {
+        axios.post('localhost:5000/login',
+            {
+                client: {
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            },
+            { withCredentials: true }
+        ).then(response => {
+            console.log('logged in', response);
+        })
         event.preventDefault()
     }
 
@@ -29,7 +41,7 @@ export default class LoginComponent extends Component {
     render() {
         return (
             <div>
-                <form onChange={this.handleLoginChange}> 
+                <form onSubmit={this.handleSubmit}> 
                     <input
                         type="text"
                         name="username"
@@ -46,7 +58,7 @@ export default class LoginComponent extends Component {
                         onChange={this.handleLoginChange}>
                     </input>
                 </form>
-                <button type='submit'> Log in</button>
+                <button type='submit'>Log in</button>
             </div>
         );
     };

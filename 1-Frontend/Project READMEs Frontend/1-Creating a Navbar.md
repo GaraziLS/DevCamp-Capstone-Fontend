@@ -74,6 +74,7 @@ import ErrorPage from "./pages/error-page"
 import SignupPage from "./pages/signup";
 import LoginPage from "./pages/login";
 import GeneratorItem from "./pages/generator-item"
+import ProfilePage from "./pages/user-profile"
 ```
 
 Now we'll add the routes, and pass in each page component (that we previously imported):
@@ -94,6 +95,7 @@ export default class App extends Component {
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/tables/:slug" component={GeneratorItem} />
+            <Route exact path="/users/:slug" component={ProfilePage}/>
             <Route component={ErrorPage} />
           </Switch>
 
@@ -114,6 +116,7 @@ Note that the last item doesn't have a path. That's because if no path is provid
         <NavLink exact to="/" className="link" activeClassName="active-link">Home</NavLink>
         <NavLink exact to="/whats-this" className="link" activeClassName="active-link">What's this?</NavLink>
         <NavLink exact to="/create" className="link" activeClassName="active-link">Create</NavLink>
+        <NavLink exact to="/users/:slug" className="link" activeClassName="active-link">Create</NavLink>>
 ```
 
 Now that the links work, it's time to give styles. But first, we'll add the search bar and the login/sign up button.

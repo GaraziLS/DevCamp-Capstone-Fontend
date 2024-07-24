@@ -10,8 +10,17 @@ export default class SignupComponent extends Component {
             password: ""
         };
 
+        // Bindings
+
         this.handleSignupChange = this.handleSignupChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
+
+    // Handlers
+
+    handleSubmit(event) {
+        event.preventDefault()
+    }
 
     handleSignupChange(event) {
         this.setState({
@@ -22,7 +31,7 @@ export default class SignupComponent extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="email"
                         name="email"

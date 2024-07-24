@@ -10,6 +10,7 @@ export default function () {
                 <NavLink exact to="/" className="link" activeClassName="active-link"><FontAwesomeIcon icon="home"/> Home</NavLink>
                 <NavLink exact to="/whats-this" className="link" activeClassName="active-link"><FontAwesomeIcon icon='circle-info'/> What's this?</NavLink>
                 <NavLink exact to="/create" className="link" activeClassName="active-link"><FontAwesomeIcon icon='magic-wand-sparkles'/> Create</NavLink>
+                <NavLink exact to="/users/:slug" className="link" activeClassName="active-link"><FontAwesomeIcon icon='id-card'/> Profile</NavLink>
             </div>
 
             <div className='search-wrapper'>

@@ -2,8 +2,6 @@
 
 ## Adding state and more params to the form
 
-Both forms handle state, and change it while the user is typing. We'll add state inside the forms (it will start empty):
-
 ```
 export default class SignupComponent extends Component {
     constructor(props) {
@@ -77,8 +75,6 @@ handleSignupChange(event) {
     }
 ```
 
-This code receives an event and sets state. The event.target name is set to distinguish between the state elements, to know which is which (if the user types in the password field the target will be the password, and so on). The [] are used to note that this is an expression and not a string.
-
 > We must bind the handler to the ``this`` keyword in order to call it properly, so we'll type ``this.handleSignupChange = this.handleSignupChange.bind(this);``. We should get this:
 
 ```
@@ -104,4 +100,16 @@ export default class SignupComponent extends Component {
 
     render {...}
 ```
+
+## Submit handler
+
+```
+this.handleSubmit = this.handleSubmit.bind(this);
+
+handleSubmit(event) {
+        event.preventDefault()
+    }
+```
+
+
 
