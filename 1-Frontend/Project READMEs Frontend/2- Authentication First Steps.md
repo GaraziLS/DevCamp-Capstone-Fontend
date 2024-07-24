@@ -92,5 +92,5 @@ export default class Login extends Component {
 }
 ```
 
-For the sake of clarity we'll separate the login and sign up related codes, giving each one a separate file, despite the process being similar.
+For the sake of clarity we'll separate the login and sign up related codes, giving each one a separate file, despite the process being similar. The codes themselves are found in the **login_component.js** and **signup_component.js** files, so all the work will be there.
 

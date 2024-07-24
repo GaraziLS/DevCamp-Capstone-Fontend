@@ -1,24 +1,35 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class LoginComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: "",
-            password: ""
-        }
+            email: '',
+            password: ''
+        };
 
-        handleLoginChange(Event); {
-            this.setState({
-                [Event.target.name]: Event.target.value
-            })
-        }
+        // Bindings
+
+        this.handleLoginChange = this.handleLoginChange.bind(this);
     }
+
+        // Handlers
+
+    handleSubmit(event) {
+        event.preventDefault()
+    }
+
+    handleLoginChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
     render() {
         return (
             <div>
-                <form onChange={handleLoginChange}> 
+                <form onChange={this.handleLoginChange}> 
                     <input
                         type="text"
                         name="username"
@@ -35,7 +46,8 @@ export default class LoginComponent extends Component {
                         onChange={this.handleLoginChange}>
                     </input>
                 </form>
+                <button type='submit'> Log in</button>
             </div>
         );
     };
-}
+};

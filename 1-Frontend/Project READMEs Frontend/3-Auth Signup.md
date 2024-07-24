@@ -1,15 +1,16 @@
-## Login form auth
+## Signup form auth
 
 ## Adding state and more params to the form
 
 Both forms handle state, and change it while the user is typing. We'll add state inside the forms (it will start empty):
 
 ```
-export default class LoginComponent extends Component {
+export default class SignupComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            email: ""
             username: "",
             password: ""
         }
@@ -33,16 +34,24 @@ Inside the curly brackets we're going to pass a function **WITH NO PARENTHESES**
 
 Now, we'll add more params to each input because we need to keep track of the value, as well as the changes. So our code from above would become this:
 
-**Log in form**
+**Sign up form**
 
 ```
 <form onSubmit={this.handleSubmit}>
+        <input>
+           type="email"
+           name="email"
+           placeholder="Type your email"
+           value={this.state.email}
+           onChange={this.handleSignupChange}>
+       </input>
+
        <input>
            type="text"
            name="username"
            placeholder="Type your username"
            value={this.state.username}
-           onChange={this.handleLoginChange}>
+           onChange={this.handleSignupChange}>
        </input>
 
        <input
@@ -50,18 +59,18 @@ Now, we'll add more params to each input because we need to keep track of the va
            name="password"
            placeholder="Type your password"
            value={this.state.password}
-           onChange={this.handleLoginChange}>
+           onChange={this.handleSignupChange}>
        </input>
    </form>
    <button type="submit">Sign up</button>
 ```
 
+Now we're going to create the handleSignupChange, which will update the state when the user types something in. We'll create that below the constructor.
+
 ## Change handler
 
-Now we're going to create the handleLoginChange, which will update the state when the user types something in. We'll create that below the constructor.
-
 ```
-handleLoginChange(event) {
+handleSignupChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -70,12 +79,12 @@ handleLoginChange(event) {
 
 This code receives an event and sets state. The event.target name is set to distinguish between the state elements, to know which is which (if the user types in the password field the target will be the password, and so on). The [] are used to note that this is an expression and not a string.
 
-> We must bind the handler to the ``this`` keyword in order to call it properly, so we'll type ``this.handleLoginChange = this.handleLoginChange.bind(this);``. We should get this:
+> We must bind the handler to the ``this`` keyword in order to call it properly, so we'll type ``this.handleSignupChange = this.handleSignupChange.bind(this);``. We should get this:
 
 ```
 import React, { Component } from 'react';
 
-export default class LoginComponent extends Component {
+export default class SignupComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -84,10 +93,10 @@ export default class LoginComponent extends Component {
             password: ""
         };
 
-        this.handleLoginChange = this.handleLoginChange.bind(this);
+        this.handleSignupChange = this.handleSignupChange.bind(this);
     }
 
-    handleLoginChange(event) {
+    handleSignupChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -96,6 +105,3 @@ export default class LoginComponent extends Component {
     render {...}
 ```
 
-## Submit handler
-
-Remember the handleSubmit method of the submit button? We'll work on that now. The handler will be above the Change handler, and we'll bind that as well.

@@ -8,8 +8,17 @@ export default class SignupComponent extends Component {
             email: "",
             username: "",
             password: ""
-        }
+        };
+
+        this.handleSignupChange = this.handleSignupChange.bind(this);
+    };
+
+    handleSignupChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
+
     render() {
         return (
             <div>
@@ -19,7 +28,7 @@ export default class SignupComponent extends Component {
                         name="email"
                         placeholder="Type your email"
                         value={this.state.email}
-                        onChange={this.handleChange}>
+                        onChange={this.handleSignupChange}>
                     </input>
 
                     <input
@@ -27,7 +36,7 @@ export default class SignupComponent extends Component {
                         name="username"
                         placeholder="Type your username"
                         value={this.state.username}
-                        onChange={this.handleChange}>
+                        onChange={this.handleSignupChange}>
                     </input>
 
                     <input
@@ -35,9 +44,10 @@ export default class SignupComponent extends Component {
                         name="password"
                         placeholder="Type your password"
                         value={this.state.password}
-                        onChange={this.handleChange}>
+                        onChange={this.handleSignupChange}>
                     </input>
                 </form>
+                <button type="submit">Sign up</button>
             </div>
         );
     };
