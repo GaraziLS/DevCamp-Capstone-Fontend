@@ -73,7 +73,7 @@ import CreatePage from "./pages/create";
 import ErrorPage from "./pages/error-page"
 import SignupPage from "./pages/signup";
 import LoginPage from "./pages/login";
-import GeneratorItem from "./pages/generator-item"
+import SingleGenerator from "./pages/generator-item"
 import ProfilePage from "./pages/user-profile"
 ```
 
@@ -94,7 +94,7 @@ export default class App extends Component {
             <Route exact path="/create" component={CreatePage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/tables/:slug" component={GeneratorItem} />
+            <Route exact path="/tables/:slug" component={SingleGenerator} />
             <Route exact path="/users/:slug" component={ProfilePage}/>
             <Route component={ErrorPage} />
           </Switch>
@@ -207,6 +207,7 @@ To test that everything's going right, go to the project folder and type ``npm r
 We need an API to continue with the project, so before proceeding we'll create one. Go to the Backend folder and search for the Project READMEs to know how to create one.
 
 We'll need Axios to connect the frontend with the backend, so install it now: ``npm i axios``.
+
 
 
 

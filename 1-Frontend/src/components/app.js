@@ -7,11 +7,12 @@ import CreatePage from "./pages/create";
 import ErrorPage from "./pages/error-page";
 import SignupPage from "./pages/signup";
 import LoginPage from "./pages/login";
-import GeneratorItem from "./pages/generator-item"
+import SingleGenerator from "./pages/single-generator"
 import ProfilePage from "./pages/user-profile"
 
 import Navbar from "./project_components/navbar";
 import Icons from "../helpers/icons"
+
 
 export default class App extends Component {
   constructor() {
@@ -34,7 +35,7 @@ export default class App extends Component {
             <Route exact path="/create" component={CreatePage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/tables/:slug" component={GeneratorItem} />
+            <Route exact path="/tables/:slug" component={SingleGenerator} />
             <Route exact path="/users/:slug" component={ProfilePage}/>
             <Route component={ErrorPage} />
           </Switch>
