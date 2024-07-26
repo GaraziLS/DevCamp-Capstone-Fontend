@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 
 export default class SingleGenerator extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
 }
     render() {
         return (
         <div>
-            <Link to={`tables/${this.props.slug}`}>Link</Link>
+            <NavLink to={`/tables/${this.props.slug}`}>Link to a random table</NavLink>
         </div>
         );
     };

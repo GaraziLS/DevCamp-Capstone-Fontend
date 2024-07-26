@@ -31,6 +31,7 @@ export default class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/tables" component={Home} />
             <Route exact path="/whats-this" component={WhatsThis} />
             <Route exact path="/create" component={CreatePage} />
             <Route exact path="/signup" component={SignupPage} />
