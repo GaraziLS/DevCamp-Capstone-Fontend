@@ -28,10 +28,10 @@ We're hardcoding (temporarily) some data now. Inside the **ItemContainer** compo
 > Looping through data and then rendering it is quite common, to avoid hardcoding and to generate things dynamically. To do this in React we'll use the map function (this function always returns something). _item is underscored to avoid the declared but never used error.
 
 ```
-SingleGenerators() {
+RandomTables() {
         const data = ["Characters", "Weapons", "Treasure"];
         return data.map(_item => {
-            return <SingleGenerator/>; })
+            return <RandomTable/>; })
     }
 ```
 
@@ -44,7 +44,7 @@ render() {
         return (
             <div>
                 <h2>Portfolio Container</h2>
-                <div>{SingleGenerators()}</div> // <---- Functional component (SingleGenerator) called via function with curly brackets
+                <div>{RandomTables()}</div> // <---- Functional component (RandomTable) called via function with curly brackets
             </div>
 ```
 
@@ -56,10 +56,10 @@ export default class ItemContainer extends Component {
         super();
     }
 
-SingleGenerators() {
+RandomTables() {
         const data = ["Characters", "Weapons", "Treasure"];
         return data.map(_item => {
-            return <SingleGenerator/>;
+            return <RandomTable/>;
         })
     }
 
@@ -67,7 +67,7 @@ SingleGenerators() {
         return (
             <div>
                 <h1>All the items go here</h1>
-                {this.SingleGenerators()}
+                {this.RandomTables()}
             </div>
         );
 ```
@@ -75,7 +75,7 @@ SingleGenerators() {
 The function, right now, returns a single component. We need to loop through each item. So that function will become this:
 
 ```
-SingleGenerators() {
+RandomTables() {
         const data = ["Characters", "Weapons", "Treasure"];
         return data.map(_item => {
             return <h1>{_item}</h1>;;
@@ -96,31 +96,25 @@ export default class ItemContainer extends Component {
         super();
     }
 
-    SingleGenerators() {
+    RandomTables() {
         const data = ["Characters", "Weapons", "Treasure"];
         return data.map(_item => {
-            return <SingleGenerator key={_item.id} title={_item}/>;
+            return <SingleItem key={_item.id} title={_item}/>;
         })
 ```
 
 > Unique keys must be passed too (in this case we return the item and the id) in data collections to avoid issues.
 > Note that we're working inside a function that's being called later on.
 
-Now we need the component itself to be able to render the prop in the page. To do this we must go to the component itself (**single-generator**) and inside the function pass the prop element via the reserved word props.key:
+Now we need the component itself to be able to render the prop in the page We'll go to the **single-item** file, a functional component: 
 
 ```
-export default class SingleGenerator extends Component {
-    constructor(props) {
-        super(props);
-
-}
-    render() {
-        return (
+export default function SingleItem(props) {
+    return (
         <div>
-            <h1>Random table for {this.props.title}</h1>
+            <Link to={`/tables/${props.slug}`}>{props.slug}</Link>
         </div>
-        );
-    };
+    );
 }
 ```
 
@@ -143,7 +137,7 @@ this.state = {
             return (
                 <div>
                     <h1>All the items go here</h1>
-                    {this.SingleGenerators()}
+                    {this.RandomTables()}
                 </div>
 ```   
 
@@ -151,16 +145,16 @@ this.state = {
 
 ## Adding props to the generator-item file
 
-We'll now add props to each specific generator (**single-generator.js** file). But first, we need to add those to the route in the **app.js** file.
+We'll now add props to each specific generator (**random-table.js** file). But first, we need to add those to the route in the **app.js** file.
 
 ```
-<Route exact path="/tables/:slug" component={SingleGenerator} />
+<Route exact path="/tables/:slug" component={RandomTable} />
 ```
 
-Now we'll work in the component itself (**single-generator**) and pass props:
+Now we'll work in the component itself (**random-table**) and pass props:
 
 ```
-export default class SingleGenerator extends Component {
+export default class RandomTable extends Component {
     constructor(props) {
         super(props);
 
@@ -175,7 +169,7 @@ export default class SingleGenerator extends Component {
 Now if we add the /tables/whatever to the route in the searchbar, we'll get that individual component, but we actually need to go to that url. We'll modify the **item-container.js** file to modify the data:
 
 ```
-SingleGenerators() {
+RandomTables() {
     const data = [
         {title: "Races", slug: "first", category: "Characters"},
         {title: "Weapons", slug: "second", category: "Objects"},
@@ -188,25 +182,25 @@ Now we'll pass the slug prop to the calling of the component:
 
 ```
 return data.map(_item => {
-            return <SingleGenerator key={_item.id} title={_item} slug={_item.slug} />;
+            return <SingleItem key={_item.id} title={_item} slug={_item.slug} />;
 ```
 
-Now we will pass this prop to the component itself, in **single-generator.js** file:
+Now we will pass this prop to the component itself, in **random-table.js** file:
 
 ```
-export default class SingleGenerator extends Component {
-    constructor(props) {
-        super(props);
+import React from 'react';
 
-}
-    render() {
-        return (
+export default function (props) {
+    return (
         <div>
-            <Link to={`tables/${this.props.slug}`}>Link</Link>
+            {props.match.params.slug}
         </div>
-        );
+    );
+}
 ```
 
 Now the links point to each item.
+
+The **single-item** page only renders the item links. The individual tables are in the page components section, in the **random-table** file.
 
 

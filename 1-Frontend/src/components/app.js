@@ -7,7 +7,7 @@ import CreatePage from "./pages/create";
 import ErrorPage from "./pages/error-page";
 import SignupPage from "./pages/signup";
 import LoginPage from "./pages/login";
-import SingleGenerator from "./pages/single-generator"
+import RandomTable from "./project_components/Item_Components/random-table"
 import ProfilePage from "./pages/user-profile"
 
 import Navbar from "./project_components/navbar";
@@ -36,8 +36,8 @@ export default class App extends Component {
             <Route exact path="/create" component={CreatePage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/tables/:slug" component={SingleGenerator} />
-            <Route exact path="/users/:slug" component={ProfilePage}/>
+            <Route exact path="/tables/:slug" component={RandomTable} />
+            <Route exact path="/users/:slug" component={ProfilePage} />
             <Route component={ErrorPage} />
           </Switch>
 
