@@ -3,8 +3,8 @@ import React from 'react';
 
 export default function (props) {
     return (
-        <div>
+        <h1>
             {props.match.params.slug}
-        </div>
+        </h1>
     );
 }

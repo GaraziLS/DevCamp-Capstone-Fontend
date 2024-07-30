@@ -1,3 +1,35 @@
+## Using APIs
+
+We'll now start connecting the frontend and the backend using Axios. This will allow us to create data dynamically over time.
+
+First, we'll make a test to ensure everything is working, and we'll do it in the **app.js** file.
+
+```
+export default class App extends Component {
+  constructor() {
+    super();
+
+    Icons()
+
+    this.getAllItemsData = this.getAllItemsData.bind(this)
+  }
+
+  getAllItemsData() {
+    axios.get("http://localhost:5000/tables")
+      .then(response => {
+        console.log("Items received", response)
+      }).catch(error => {
+        console.log(error)
+      })
+  }
+
+  render() {
+    this.getAllItemsData()
+```
+
+Now a message should appear in the console. We're going to move this to the **portfolio-container** file, which is the component rendering in the homepage.
+
+```
 import React, { Component } from 'react';
 import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
@@ -46,15 +78,4 @@ export default class ItemContainer extends Component {
 
     render() {
         this.getAllItemsData()
-        if (this.state.isLoading === true) {
-            return <div>Loading...</div>
-        } else {
-            return (
-                <div>
-                    <h1>All the items go here</h1>
-                    {this.SingleGenerators()}
-                </div>
-            );
-        };
-    }
-}
+```
