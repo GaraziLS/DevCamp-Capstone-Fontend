@@ -8,3 +8,15 @@
 body {
     background-color: #EBEBEB;
 }
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.link {
+    color: $HoverBlue;
+    text-decoration: none;
+    cursor: pointer;
+}

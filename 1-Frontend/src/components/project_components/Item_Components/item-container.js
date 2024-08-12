@@ -9,7 +9,11 @@ export default class ItemContainer extends Component {
         super();
 
         this.state = {
-            data: [],
+            data: [
+                { id: "1", title: "Races", category: "Characters", slug: "Races" },
+                { id: "2", title: "Weapons", category: "Objects", slug: "Weapons" },
+                { id: "3", title: "Treasure", category: "Treasure", slug: "Treasure" }
+            ],
             isLoading: false
 
         }
@@ -22,12 +26,7 @@ export default class ItemContainer extends Component {
     // Data Container
 
     SingleGenerators() {
-        const data = [
-            { id: "1", title: "Races", category: "Characters", slug: "Races" },
-            { id: "2", title: "Weapons", category: "Objects", slug: "Weapons" },
-            { id: "3", title: "Treasure", category: "Treasure", slug: "Treasure" }
-        ];
-        return data.map(_item => {
+        return this.state.data.map(_item => {
             return (< SingleItem key={_item.id} title={_item.title} slug={_item.slug} />)
         })
     }

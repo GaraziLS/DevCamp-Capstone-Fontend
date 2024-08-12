@@ -27,7 +27,7 @@ export default class App extends Component {
     this.getAllItemsData()
 ```
 
-Now a message should appear in the console. We're going to move this to the **portfolio-container** file, which is the component rendering in the homepage.
+Now a message should appear in the console. We're going to move this to the **item-container** file, which is the component rendering in the homepage.
 
 ```
 import React, { Component } from 'react';
@@ -79,3 +79,14 @@ export default class ItemContainer extends Component {
     render() {
         this.getAllItemsData()
 ```
+
+Now the console should display the axios calling.
+
+<!-- ##TODO: Create a way for me, as an admin, to delete user accounts. TBD when the project is delivered -->
+
+
+## Rendering data
+
+We've tested our endpoints and they display on console. Now we're going to render them on the screen. To do that, first we'll go to the **item-container.js** file.
+
+We'll remove the methods we had to start freshly, and will also remove the hardcoded data in the initial state. We'll call Axios in a new method called GetAllTables:
