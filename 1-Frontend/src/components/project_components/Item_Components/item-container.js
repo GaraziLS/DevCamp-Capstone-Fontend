@@ -34,7 +34,7 @@ export default class ItemContainer extends Component {
 
     // Data Container
 
-    singleGenerators() {
+    singleGenerator() {
         return this.state.data.map(_item => {
             return (< SingleItem key={_item.item_id} title={_item.item_title} content={_item.item_content} slug={_item.item_title} />)
         })
@@ -51,8 +51,18 @@ export default class ItemContainer extends Component {
         } else {
             return (
                 <div>
-                    <h1>All the items go here</h1>
-                    {this.singleGenerators()}
+                    <h2>Welcome</h2>
+
+                    {/* Filter section */}
+                    <button>Characters</button>
+                    <button>Objects</button>
+                    <button>Quests</button>
+                    <button>Skills</button>
+                    <button>World</button>
+                    <button>Other</button>
+                    <button>Filter All</button>
+
+                    {this.singleGenerator()}
                 </div>
             );
         };

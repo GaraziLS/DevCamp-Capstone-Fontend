@@ -165,3 +165,13 @@ getAllTables() {
 ```
 
 Now we need to modify the SingleItem's props (in the calling) to pass in the fields that were designed in the API.
+
+```
+singleGenerator() {
+        return this.state.data.map(_item => {
+            return (< SingleItem key={_item.item_id} title={_item.item_title} content={_item.item_content} slug={_item.item_title} />)
+        })
+    }
+```
+
+Now the items will be rendered.
