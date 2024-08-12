@@ -9,49 +9,50 @@ export default class ItemContainer extends Component {
         super();
 
         this.state = {
-            data: [
-                { id: "1", title: "Races", category: "Characters", slug: "Races" },
-                { id: "2", title: "Weapons", category: "Objects", slug: "Weapons" },
-                { id: "3", title: "Treasure", category: "Treasure", slug: "Treasure" }
-            ],
+            data: [],
             isLoading: false
 
         }
 
         // Bindings
 
-        this.getAllItemsData = this.getAllItemsData.bind(this)
+        this.getAllTables = this.getAllTables.bind(this)
+
     }
 
-    // Data Container
-
-    SingleGenerators() {
-        return this.state.data.map(_item => {
-            return (< SingleItem key={_item.id} title={_item.title} slug={_item.slug} />)
-        })
-    }
 
     // API Connections
 
-    getAllItemsData() {
+    getAllTables() {
         axios.get("http://localhost:5000/tables")
             .then(response => {
-                console.log("Items received", response)
+                this.setState({ data: response.data })
             }).catch(error => {
                 console.log(error)
             })
     }
 
+    // Data Container
+
+    singleGenerators() {
+        return this.state.data.map(_item => {
+            return (< SingleItem key={_item.item_id} title={_item.item_title} content={_item.item_content} slug={_item.item_title} />)
+        })
+    }
+
+
+    componentDidMount() {
+        this.getAllTables()
+    }
 
     render() {
-        this.getAllItemsData()
         if (this.state.isLoading === true) {
             return <div>Loading...</div>
         } else {
             return (
                 <div>
                     <h1>All the items go here</h1>
-                    {this.SingleGenerators()}
+                    {this.singleGenerators()}
                 </div>
             );
         };

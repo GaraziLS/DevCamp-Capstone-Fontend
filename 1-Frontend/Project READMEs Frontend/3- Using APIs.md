@@ -41,10 +41,15 @@ export default class ItemContainer extends Component {
         super();
 
         this.state = {
-            data: [],
+            data: [
+                { id: "1", title: "Races", category: "Characters", slug: "Races" },
+                { id: "2", title: "Weapons", category: "Objects", slug: "Weapons" },
+                { id: "3", title: "Treasure", category: "Treasure", slug: "Treasure" }
+            ],
             isLoading: false
 
         }
+
 
         // Bindings
 
@@ -54,12 +59,7 @@ export default class ItemContainer extends Component {
     // Data Container
 
     SingleGenerators() {
-        const data = [
-            { id: "1", title: "Races", category: "Characters", slug: "Races" },
-            { id: "2", title: "Weapons", category: "Objects", slug: "Weapons" },
-            { id: "3", title: "Treasure", category: "Treasure", slug: "Treasure" }
-        ];
-        return data.map(_item => {
+        return this.data.map(_item => {
             return (< SingleItem key={_item.id} title={_item.title} slug={_item.slug} />)
         })
     }
@@ -89,4 +89,79 @@ Now the console should display the axios calling.
 
 We've tested our endpoints and they display on console. Now we're going to render them on the screen. To do that, first we'll go to the **item-container.js** file.
 
-We'll remove the methods we had to start freshly, and will also remove the hardcoded data in the initial state. We'll call Axios in a new method called GetAllTables:
+We'll remove the bindings and the getAllItemsData method from the render, and will also remove the hardcoded data in the initial state. In the GetAllItemsData method, we'll perform a rename and will now be named GetAllTables. As for the GetAllTablesMethod, we'll put the calling inside a lifecycle hook called ComponentDidMount, which executes right after the component is loaded. So, we have this now:
+
+```
+import React, { Component } from 'react';
+import axios from "axios";
+import SingleItem from '../Item_Components/single-item';
+
+
+
+export default class ItemContainer extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            data: [],
+            isLoading: false
+
+        }
+    }
+
+    // Bindings
+
+
+
+    // Data Container
+
+    singleGenerators() {
+        return this.state.data.map(_item => {
+            return (< SingleItem key={_item.id} title={_item.title} slug={_item.slug} />)
+        })
+    }
+
+    // API Connections
+
+    getAllTables() {
+        axios.get("http://localhost:5000/tables")
+            .then(response => {
+                console.log("Items received", response)
+            }).catch(error => {
+                console.log(error)
+            })
+    }
+
+    ComponentDidMount() {
+        this.getAllTables()
+    }
+
+    render() {
+        if (this.state.isLoading === true) {
+            return <div>Loading...</div>
+        } else {
+            return (
+                <div>
+                    <h1>All the items go here</h1>
+                    {this.singleGenerators()}
+                </div>
+            );
+        };
+    }
+}
+```
+
+Inside the getAllTables method, we'll now set state, and pull in the data object from the console response from the API to populate the data.
+
+```
+getAllTables() {
+        axios.get("http://localhost:5000/tables")
+            .then(response => {
+                this.setState({ data: response.data })
+            }).catch(error => {
+                console.log(error)
+            })
+    }
+```
+
+Now we need to modify the SingleItem's props (in the calling) to pass in the fields that were designed in the API.
