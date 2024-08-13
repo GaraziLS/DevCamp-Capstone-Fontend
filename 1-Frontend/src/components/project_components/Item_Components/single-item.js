@@ -5,6 +5,7 @@ export default function SingleItem(props) {
     return (
         <div>
             <Link to={`/tables/${props.slug}`}>{props.slug}</Link>
+            {props.content}
         </div>
     );
 }

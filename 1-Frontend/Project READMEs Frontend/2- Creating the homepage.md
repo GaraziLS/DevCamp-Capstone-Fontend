@@ -1,6 +1,6 @@
 ## Creating an item container for the homepage
 
-In the **src > project_components** folder, we've created another folder called Site Container, and inside it we'll create a file called **item-container.js** This component will be embeded in the homepage and will store our random generators. Right now no items will appear, but we can start by doing the page structure. We'll also import from here ach individual item, so we should get this:
+In the **src > project_components** folder, we've created another folder called Site Container, and inside it we'll create a file called **item-container.js** This component will be embeded in the homepage and will store our random generators. Right now no items will appear, but we can start by doing the page structure. We'll also import from here each individual item, so we should get this:
 
 ```
 import React, { Component } from 'react';
@@ -99,9 +99,11 @@ export default class ItemContainer extends Component {
     RandomTables() {
         const data = ["Characters", "Weapons", "Treasure"];
         return data.map(_item => {
-            return <SingleItem key={_item.id} title={_item}/>;
+            return <SingleItem key={_item.id} title={_item.} slug={_item.title} />;
         })
 ```
+
+> RandomTables() is later renamed to SingleGenerators()
 
 > Unique keys must be passed too (in this case we return the item and the id) in data collections to avoid issues.
 > Note that we're working inside a function that's being called later on.
@@ -164,7 +166,10 @@ export default class RandomTable extends Component {
         <div>
             <h1>Random table for {this.props.title}</h1>
         </div>
+
 ```
+
+> Later converted to a functional component.
 
 Now if we add the /tables/whatever to the route in the searchbar, we'll get that individual component, but we actually need to go to that url. We'll modify the **item-container.js** file to modify the data:
 
@@ -201,6 +206,6 @@ export default function (props) {
 
 Now the links point to each item.
 
-The **single-item** page only renders the item links. The individual tables are in the page components section, in the **random-table** file.
+
 
 
