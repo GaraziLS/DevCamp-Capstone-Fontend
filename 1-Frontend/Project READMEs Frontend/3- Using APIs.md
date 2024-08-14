@@ -178,7 +178,5 @@ Now the items will be rendered.
 
 > A key is needed to distinguish between items. Item ids, which autoincrement, are ideal for that.
 
-## Image thumnails
 
-We want images to display within each item, as a thumbnail. To do so, we need to encode the images in a readable way for the database, so we'll explain that in the Backend READMEs.
 

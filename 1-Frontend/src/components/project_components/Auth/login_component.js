@@ -6,22 +6,31 @@ export default class LoginComponent extends Component {
         super(props);
 
         this.state = {
-            email: '',
+            username: '',
             password: ''
         };
 
         // Bindings
 
         this.handleLoginChange = this.handleLoginChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
+
     }
 
-        // Handlers
+    // Handlers
+
+    handleLoginChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
 
     handleSubmit(event) {
-        axios.post('localhost:5000/login',
+        axios.post('http://localhost:5000/login',
             {
                 client: {
-                    email: this.state.email,
+                    username: this.state.username,
                     password: this.state.password
                 }
             },
@@ -32,21 +41,15 @@ export default class LoginComponent extends Component {
         event.preventDefault()
     }
 
-    handleLoginChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}> 
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="username"
                         placeholder="Type your username"
-                        value={this.state.username}
+                        value={this.state.username || ""}
                         onChange={this.handleLoginChange}>
                     </input>
 
@@ -54,11 +57,12 @@ export default class LoginComponent extends Component {
                         type="password"
                         name="password"
                         placeholder="Type your password"
-                        value={this.state.password}
+                        value={this.state.password || ""}
                         onChange={this.handleLoginChange}>
                     </input>
+                    <button type='submit'>Log in</button>
                 </form>
-                <button type='submit'>Log in</button>
+
             </div>
         );
     };
