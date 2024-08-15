@@ -27,18 +27,17 @@ export default class LoginComponent extends Component {
 
 
     handleSubmit(event) {
-        axios.post('http://localhost:5000/login',
-            {
-                client: {
-                    username: this.state.username,
-                    password: this.state.password
-                }
-            },
-            { withCredentials: true }
-        ).then(response => {
-            console.log('logged in', response);
-        })
-        event.preventDefault()
+        event.preventDefault();
+        axios.post('http://localhost:5000/login', {
+            username: this.state.username,
+            password: this.state.password
+        }, { withCredentials: true })
+            .then(response => {
+                console.log('logged in', response);
+            })
+            .catch(error => {
+                console.log("Wrong username or password", error);
+            });
     }
 
     render() {
@@ -49,7 +48,7 @@ export default class LoginComponent extends Component {
                         type="text"
                         name="username"
                         placeholder="Type your username"
-                        value={this.state.username || ""}
+                        value={this.state.username}
                         onChange={this.handleLoginChange}>
                     </input>
 
@@ -57,7 +56,7 @@ export default class LoginComponent extends Component {
                         type="password"
                         name="password"
                         placeholder="Type your password"
-                        value={this.state.password || ""}
+                        value={this.state.password}
                         onChange={this.handleLoginChange}>
                     </input>
                     <button type='submit'>Log in</button>
