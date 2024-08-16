@@ -26,11 +26,25 @@ export default class LoginComponent extends Component {
     }
 
 
+    // handleSubmit(event) {
+    //     event.preventDefault();
+    //     axios.post('http://localhost:5000/login', {
+    //         username: this.state.username,
+    //         password: this.state.password
+    //     }, { withCredentials: true })
+    //         .then(response => {
+    //             console.log('logged in', response);
+    //         })
+    //         .catch(error => {
+    //             console.log("Wrong username or password", error);
+    //         });
+    // }
+
     handleSubmit(event) {
         event.preventDefault();
         axios.post('http://localhost:5000/login', {
-            username: this.state.username,
-            password: this.state.password
+            user_name: this.state.username,
+            user_password: this.state.password
         }, { withCredentials: true })
             .then(response => {
                 console.log('logged in', response);
@@ -39,6 +53,8 @@ export default class LoginComponent extends Component {
                 console.log("Wrong username or password", error);
             });
     }
+
+
 
     render() {
         return (
@@ -64,5 +80,5 @@ export default class LoginComponent extends Component {
 
             </div>
         );
-    };
+    }
 };
