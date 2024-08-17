@@ -7,7 +7,8 @@ export default class LoginComponent extends Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errorText: ''
         };
 
         // Bindings
@@ -22,23 +23,11 @@ export default class LoginComponent extends Component {
     handleLoginChange(event) {
         this.setState({
             [event.target.name]: event.target.value
+        })
+        this.setState({
+            errorText: ""
         });
     }
-
-
-    // handleSubmit(event) {
-    //     event.preventDefault();
-    //     axios.post('http://localhost:5000/login', {
-    //         username: this.state.username,
-    //         password: this.state.password
-    //     }, { withCredentials: true })
-    //         .then(response => {
-    //             console.log('logged in', response);
-    //         })
-    //         .catch(error => {
-    //             console.log("Wrong username or password", error);
-    //         });
-    // }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -47,18 +36,31 @@ export default class LoginComponent extends Component {
             user_password: this.state.password
         }, { withCredentials: true })
             .then(response => {
-                console.log('logged in', response);
+                if (response.status === 200) {
+                    console.log("Successful log in", response)
+                }
             })
             .catch(error => {
-                console.log("Wrong username or password", error);
-            });
+                if (error.response || error.response.status === 401) {
+                    this.setState({
+                        errorText: "Wrong username or password"
+                    })
+                } else {
+                    this.setState({
+                        errorText: "It seems that the server is down. Please, try again later."
+                    })
+                }
+            }
+            )
     }
-
 
 
     render() {
         return (
             <div>
+                <h2>Log in</h2>
+                <div>{this.state.errorText}</div>
+
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
@@ -81,4 +83,4 @@ export default class LoginComponent extends Component {
             </div>
         );
     }
-};
+}
