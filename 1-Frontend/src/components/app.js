@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios"
+
 
 import Home from "./pages/homepage";
 import WhatsThis from "./pages/whats-this";
@@ -16,11 +16,31 @@ import Icons from "../helpers/icons"
 
 
 export default class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      LoginStatus: "NOT_LOGGED_IN"
+    }
 
     Icons()
 
+    // Bindings
+
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this)
+    this.handleUnSuccessfulLogin = this.handleUnsuccessfulLogin.bind(this)
+  }
+
+  handleSuccessfulLogin() {
+    this.setState({
+      loggedInStatus: 'LOGGED_IN'
+    });
+  }
+
+  handleUnsuccessfulLogin() {
+    this.setState({
+      loggedInStatus: 'NOT_LOGGED_IN'
+    });
   }
 
   render() {
@@ -37,7 +57,14 @@ export default class App extends Component {
             <Route exact path="/whats-this" component={WhatsThis} />
             <Route exact path="/create" component={CreatePage} />
             <Route exact path="/signup" component={SignupPage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/login"
+              render={props => (
+                <LoginPage
+                  {...props}
+                  handleSuccessfulLogin={this.handleSuccessfulLogin}
+                  handleUnSuccessfulLogin={this.handleUnsuccessfulLogin} />
+              )}
+            />
             <Route exact path="/tables/:slug" component={RandomTable} />
             <Route exact path="/users/:slug" component={ProfilePage} />
             <Route component={ErrorPage} />
