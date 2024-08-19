@@ -36,7 +36,6 @@ export default class ItemContainer extends Component {
 
     singleGenerator() {
         return this.state.data.map(item => {
-            debugger;
             return (< SingleItem key={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} />)
         })
     }

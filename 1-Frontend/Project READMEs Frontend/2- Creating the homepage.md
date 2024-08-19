@@ -35,6 +35,8 @@ RandomTables() {
     }
 ```
 
+> Later renamed to SingleGenerator() and to SingleItem.
+
 Yes, in react you can return components inside functions.
 
 In order to render this we need to use curly brackets, because when you want to slide some JavaScript code into your render function here, you need to use curly brackets, and we are rendering the function that has a component inside it:
@@ -44,7 +46,7 @@ render() {
         return (
             <div>
                 <h2>Portfolio Container</h2>
-                <div>{RandomTables()}</div> // <---- Functional component (RandomTable) called via function with curly brackets
+                <div>{RandomTables()}</div> // <---- Functional component (RandomTables) called via function with curly brackets
             </div>
 ```
 
@@ -103,8 +105,6 @@ export default class ItemContainer extends Component {
         })
 ```
 
-> RandomTables() is later renamed to SingleGenerators()
-
 > Unique keys must be passed too (in this case we return the item and the id) in data collections to avoid issues.
 > Note that we're working inside a function that's being called later on.
 
@@ -145,8 +145,7 @@ this.state = {
 
 >  In JavaScript, = is used to assign a value to a variable, while == and === are used to compare values. When you use if (this.state.isLoading = true), you are assigning true to this.state.isLoading and the result of the assignment (true) is evaluated in the if statement, making the condition always true, so the loading part would always load.
 
-## Adding props to the generator-item file
-
+## Adding props to the random-table file
 We'll now add props to each specific generator (**random-table.js** file). But first, we need to add those to the route in the **app.js** file.
 
 ```
@@ -204,8 +203,17 @@ export default function (props) {
 }
 ```
 
-Now the links point to each item.
+Now the links point to each item. To finish the Homepage, we'll call the ItemContainer component there.
 
+```
+export default function () {
+    return (
+        <div>
+            <ItemContainer />
+        </div>
+    );
+}
+```
 
 
 

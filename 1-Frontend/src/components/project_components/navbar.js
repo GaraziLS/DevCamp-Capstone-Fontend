@@ -3,14 +3,19 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-export default function () {
+export default function (props) {
     return (
         <div className='navbar-wrapper'>
             <div className='navlink-wrapper'>
                 <NavLink exact to="/" className="link" activeClassName="active-link"><FontAwesomeIcon icon="home" /> Home</NavLink>
                 <NavLink exact to="/whats-this" className="link" activeClassName="active-link"><FontAwesomeIcon icon='circle-info' /> What's this?</NavLink>
-                <NavLink exact to="/create" className="link" activeClassName="active-link"><FontAwesomeIcon icon='magic-wand-sparkles' /> Create</NavLink>
-                <NavLink exact to="/users/:slug" className="link" activeClassName="active-link"><FontAwesomeIcon icon='id-card' /> Profile</NavLink>
+
+                {props.LoggedInStatus === "LOGGED_IN" ?
+                    <NavLink exact to="/create" className="link" activeClassName="active-link"><FontAwesomeIcon icon='magic-wand-sparkles' /> Create</NavLink> : null}
+
+                {props.LoggedInStatus === "LOGGED_IN" ?
+                    <NavLink exact to="/users/:slug" className="link" activeClassName="active-link"><FontAwesomeIcon icon='id-card' /> Profile</NavLink> : null}
+
             </div>
 
             <div className='search-wrapper'>

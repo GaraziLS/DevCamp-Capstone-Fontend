@@ -28,19 +28,45 @@ export default class App extends Component {
     // Bindings
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this)
-    this.handleUnSuccessfulLogin = this.handleUnsuccessfulLogin.bind(this)
+    this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this)
   }
 
   handleSuccessfulLogin() {
     this.setState({
-      loggedInStatus: 'LOGGED_IN'
+      LoginStatus: "LOGGED_IN"
     });
   }
 
   handleUnsuccessfulLogin() {
     this.setState({
-      loggedInStatus: 'NOT_LOGGED_IN'
+      LoginStatus: "NOT_LOGGED_IN"
     });
+  }
+
+  checkLoginStatus() {
+    axios.get('http://localhost:5000/login', { withCredentials: true })
+      .then(response => {
+        console.log(response)
+        debugger;
+        const loggedIn = response.data.logged_in;
+        const loggedInStatus = this.state.LoginStatus;
+
+        console.log(loggedIn)
+
+        if (loggedIn && loggedInStatus === 'LOGGED_IN') {
+          return loggedIn;
+        } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
+          this.setState({
+            LoginStatus: 'LOGGED_IN'
+          });
+        } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
+          this.setState({
+            LoginStatus: 'NOT_LOGGED_IN'
+          });
+        }
+      }).catch(error => {
+        console.log('Error: ', error);
+      });
   }
 
   render() {
@@ -49,7 +75,7 @@ export default class App extends Component {
 
         <Router>
 
-          <Navbar />
+          <Navbar LoggedInStatus={this.state.LoginStatus} />
 
           <Switch>
             <Route exact path="/" component={Home} />
@@ -62,7 +88,7 @@ export default class App extends Component {
                 <LoginPage
                   {...props}
                   handleSuccessfulLogin={this.handleSuccessfulLogin}
-                  handleUnSuccessfulLogin={this.handleUnsuccessfulLogin} />
+                  handleUnsuccessfulLogin={this.handleUnsuccessfulLogin} />
               )}
             />
             <Route exact path="/tables/:slug" component={RandomTable} />
