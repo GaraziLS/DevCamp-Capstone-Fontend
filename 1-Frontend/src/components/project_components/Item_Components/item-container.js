@@ -4,6 +4,7 @@ import SingleItem from '../Item_Components/single-item';
 
 
 
+
 export default class ItemContainer extends Component {
     constructor() {
         super();
@@ -36,7 +37,7 @@ export default class ItemContainer extends Component {
 
     singleGenerator() {
         return this.state.data.map(item => {
-            return (< SingleItem key={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} />)
+            return (< SingleItem key={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} category={item.item_category} />)
         })
     }
 
@@ -62,7 +63,7 @@ export default class ItemContainer extends Component {
                     <button>Other</button>
                     <button>Filter All</button>
 
-                    {this.singleGenerator()}
+                    <div className="items-wrapper">{this.singleGenerator()}</div>
                 </div>
             );
         };

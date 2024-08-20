@@ -1,21 +1,34 @@
+import React, { Component } from 'react';
+import axios from "axios"
 
-import React from 'react';
+export default class RandomTable extends Component {
+    constructor(props) {
+        super(props);
 
-export default function (props) {
-    return (
-        <div>
-            <h1>
-                {props.match.params.slug}
-            </h1>
-            <h2>
-                {props.content}
-            </h2>
+        this.state = {
+            RandomTableContent: []
+        }
+    }
 
+    getTableContent() {
+        axios.get("http://localhost:5000/tables"),
+            { withCredentials: true }
+                .then(response => {
+                    this.setState({
+                        RandomTableContent: response.data
+                    });
+                })
+                .catch(error => {
+                    console.log("error", error);
+                });
+    }
 
+    render() {
+        return (
+            <div>
+                <h1>{this.props.match.params.slug}</h1>
 
-            <button>Roll!</button>
-        </div>
-
-
-    );
+            </div>
+        );
+    };
 }
