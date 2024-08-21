@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function SingleItem(props) {
     return (
-        <div className="item-wrapper">
-            <Link to={`/tables/${props.slug}`}>{props.slug}</Link>
-            {props.content}
+        <div className="link">
+            <Link to={`/tables/${props.item_id}`}>{props.slug}</Link>
         </div>
     );
 }

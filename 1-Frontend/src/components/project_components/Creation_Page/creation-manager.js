@@ -35,7 +35,7 @@ export default class CreationManager extends Component {
                         <h1>Creation part</h1>
                     </div>
                     <div className="lower-part-wrapper">
-                        <RandomGenList data={this.state.RandomGeneratorList} />
+                        <RandomGenList key={this.state.RandomGeneratorList.item_id} data={this.state.RandomGeneratorList} />
                     </div>
                 </div>
             </div>

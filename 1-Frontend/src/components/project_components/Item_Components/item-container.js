@@ -2,24 +2,21 @@ import React, { Component } from 'react';
 import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
 
-
-
-
 export default class ItemContainer extends Component {
     constructor() {
         super();
 
         this.state = {
             data: [],
-            isLoading: false
+            isLoading: true
 
-        }
+        };
 
         // Bindings
 
-        this.getAllTables = this.getAllTables.bind(this)
+        // this.getAllTables = this.getAllTables.bind(this);
 
-    }
+    };
 
 
     // API Connections
@@ -27,17 +24,16 @@ export default class ItemContainer extends Component {
     getAllTables() {
         axios.get("http://localhost:5000/tables")
             .then(response => {
-                this.setState({ data: response.data })
+                this.setState({ data: response.data, isLoading: false })
             }).catch(error => {
                 console.log(error)
-            })
-    }
+            });
+    };
 
     // Data Container
-
     singleGenerator() {
         return this.state.data.map(item => {
-            return (< SingleItem key={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} category={item.item_category} />)
+            return (< SingleItem item_id={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} category={item.item_category} />)
         })
     }
 
@@ -54,16 +50,18 @@ export default class ItemContainer extends Component {
                 <div>
                     <h2>Welcome</h2>
 
-                    {/* Filter section */}
-                    <button>Characters</button>
-                    <button>Objects</button>
-                    <button>Quests</button>
-                    <button>Skills</button>
-                    <button>World</button>
-                    <button>Other</button>
-                    <button>Filter All</button>
-
-                    <div className="items-wrapper">{this.singleGenerator()}</div>
+                    <div className="container">
+                        <div className="filter">
+                            <button>Characters</button>
+                            <button>Objects</button>
+                            <button>Quests</button>
+                            <button>Skills</button>
+                            <button>World</button>
+                            <button>Other</button>
+                            <button>Filter All</button>
+                        </div>
+                        <div className="items-wrapper">{this.singleGenerator()}</div>
+                    </div>
                 </div>
             );
         };

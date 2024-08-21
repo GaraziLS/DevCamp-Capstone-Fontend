@@ -114,7 +114,7 @@ Now we need the component itself to be able to render the prop in the page We'll
 export default function SingleItem(props) {
     return (
         <div>
-            <Link to={`/tables/${props.slug}`}>{props.slug}</Link>
+            <Link to={`/tables/${props.item_id}`}>{props.slug}</Link>
         </div>
     );
 }
@@ -129,7 +129,7 @@ As long as the components are class-based, they have the ability to manage their
 ```
 this.state = {
      data: [],
-    isLoading: false
+    isLoading: true
         }
 
  render() {
@@ -144,6 +144,18 @@ this.state = {
 ```   
 
 >  In JavaScript, = is used to assign a value to a variable, while == and === are used to compare values. When you use if (this.state.isLoading = true), you are assigning true to this.state.isLoading and the result of the assignment (true) is evaluated in the if statement, making the condition always true, so the loading part would always load.
+
+> This loading state starts at true and becames false when the API request is fulfilled.
+
+```
+getAllTables() {
+        axios.get("http://localhost:5000/tables")
+            .then(response => {
+                this.setState({ data: response.data, isLoading: false })
+            }).catch(error => {
+                console.log(error)
+            });
+```
 
 ## Adding props to the random-table file
 We'll now add props to each specific generator (**random-table.js** file). But first, we need to add those to the route in the **app.js** file.
@@ -185,8 +197,8 @@ RandomTables() {
 Now we'll pass the slug prop to the calling of the component:
 
 ```
-return data.map(_item => {
-            return <SingleItem key={_item.id} title={_item} slug={_item.slug} />;
+return data.map(item => {
+            return < SingleItem item_id={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} category={item.item_category} /> />;
 ```
 
 Now we will pass this prop to the component itself, in **random-table.js** file:
@@ -202,6 +214,7 @@ export default function (props) {
     );
 }
 ```
+
 
 Now the links point to each item. To finish the Homepage, we'll call the ItemContainer component there.
 

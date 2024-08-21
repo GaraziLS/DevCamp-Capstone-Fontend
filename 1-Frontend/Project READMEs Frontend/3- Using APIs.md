@@ -58,7 +58,7 @@ export default class ItemContainer extends Component {
 
     // Data Container
 
-    SingleGenerators() {
+    SingleGenerator() {
         return this.data.map(_item => {
             return (< SingleItem key={_item.id} title={_item.title} slug={_item.slug} />)
         })
@@ -104,7 +104,7 @@ export default class ItemContainer extends Component {
 
         this.state = {
             data: [],
-            isLoading: false
+            isLoading: true
 
         }
     }
@@ -151,17 +151,76 @@ export default class ItemContainer extends Component {
 }
 ```
 
-Inside the getAllTables method, we'll now set state, and pull in the data object from the console response from the API to populate the data.
+Inside the getAllTables method, we'll now set state, and pull in the data object from the console response from the API to populate the data. The isLoading method turns to false when the data is loaded.
 
 ```
-getAllTables() {
+import React, { Component } from 'react';
+import axios from "axios";
+import SingleItem from '../Item_Components/single-item';
+
+export default class ItemContainer extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            data: [],
+            isLoading: true
+
+        };
+
+        // Bindings
+
+        // this.getAllTables = this.getAllTables.bind(this);
+
+    };
+
+
+    // API Connections
+
+    getAllTables() {
         axios.get("http://localhost:5000/tables")
             .then(response => {
-                this.setState({ data: response.data })
+                this.setState({ data: response.data, isLoading: false })
             }).catch(error => {
                 console.log(error)
-            })
+            });
+    };
+
+    // Data Container
+    singleGenerator() {
+        return this.state.data.map(item => {
+            return (< SingleItem item_id={item.item_id} title={item.item_title} content={item.item_content} slug={item.item_title} category={item.item_category} />)
+        })
     }
+
+
+    componentDidMount() {
+        this.getAllTables()
+    }
+
+    render() {
+        if (this.state.isLoading === true) {
+            return <div>Loading...</div>
+        } else {
+            return (
+                <div>
+                    <h2>Welcome</h2>
+
+                    Filter section
+                    <button>Characters</button>
+                    <button>Objects</button>
+                    <button>Quests</button>
+                    <button>Skills</button>
+                    <button>World</button>
+                    <button>Other</button>
+                    <button>Filter All</button>
+
+                    <div className="items-wrapper">{this.singleGenerator()}</div>
+                </div>
+            );
+        };
+    }
+}
 ```
 
 Now we need to modify the SingleItem's props (in the calling) to pass in the fields that were designed in the API.
