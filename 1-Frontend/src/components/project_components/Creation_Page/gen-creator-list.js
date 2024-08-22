@@ -1,16 +1,14 @@
 import React from 'react';
 
 const RandomGenList = (props) => {
-    const RandomGen = props.data.map(item => {
-        return (
-            <div key={item.item_id}>
-                {item.item_content}
-            </div>
-        );
-    });
+    console.log("ïtem props", props)
+    const { data } = props
 
-
-    return <div>{RandomGen}</div>;
+    return (
+        <div>
+            <p style={{ fontSize: '12px' }}>{data.item_content}</p>
+        </div>
+    );
 };
 
 

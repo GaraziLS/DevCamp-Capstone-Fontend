@@ -7,15 +7,16 @@ export default class CreationManager extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            RandomGeneratorList: []
+            randomGeneratorList: []
         };
     }
 
     getRandomTables() {
-        axios.get('http://localhost:5000/tables', { withCredentials: true })
+        axios.get('http://localhost:5000/tables')
             .then(response => {
+                console.log(response)
                 this.setState({
-                    RandomGeneratorList: [response.data]
+                    randomGeneratorList: [...response.data]
                 });
             })
             .catch(error => {
@@ -35,7 +36,10 @@ export default class CreationManager extends Component {
                         <h1>Creation part</h1>
                     </div>
                     <div className="lower-part-wrapper">
-                        <RandomGenList key={this.state.RandomGeneratorList.item_id} data={this.state.RandomGeneratorList} />
+                        {this.state.randomGeneratorList.map(item => {
+                            return (<RandomGenList key={item.item_id} data={item} />)
+                        })}
+
                     </div>
                 </div>
             </div>

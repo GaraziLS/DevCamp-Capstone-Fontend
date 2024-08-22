@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios"
 
 
 import Home from "./pages/homepage";
@@ -47,8 +48,8 @@ export default class App extends Component {
     axios.get('http://localhost:5000/login', { withCredentials: true })
       .then(response => {
         console.log(response)
-        debugger;
-        const loggedIn = response.data.logged_in;
+
+        const loggedIn = response.data;
         const loggedInStatus = this.state.LoginStatus;
 
         console.log(loggedIn)

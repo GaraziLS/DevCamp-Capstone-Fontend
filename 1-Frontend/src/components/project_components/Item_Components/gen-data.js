@@ -1,23 +1,29 @@
-import React from 'react';
-import axios from "axios"
+import React, { Component } from "react";
+import axios from "axios";
 
-const GenData = (_props) => {
-    const RawData = (_props) => {
+
+export default class GenData extends Component {
+    constructor(props) {
+        super(props);
+
+        this.RawData = this.RawData.bind(this);
+    }
+
+    RawData(item_id) {
         axios.get('http://localhost:5000/tables' + item_id, { withCredentials: true })
             .then(response => {
-                console.log("test", response)
+                console.log("test", response);
             })
             .catch(error => {
                 console.log('Error in the API', error);
             });
+    };
+
+    render() {
+        return (
+            <div>
+                {this.RawData()}
+            </div>
+        );
     }
-    return (
-        <div>
-            {RawData}
-        </div>
-    );
-
-}
-
-export default GenData
-
+};
