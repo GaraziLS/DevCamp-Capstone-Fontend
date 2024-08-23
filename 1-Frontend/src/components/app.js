@@ -44,30 +44,11 @@ export default class App extends Component {
     });
   }
 
-  checkLoginStatus() {
-    axios.get('http://localhost:5000/login', { withCredentials: true })
-      .then(response => {
-        console.log(response)
-
-        const loggedIn = response.data;
-        const loggedInStatus = this.state.LoginStatus;
-
-        console.log(loggedIn)
-
-        if (loggedIn && loggedInStatus === 'LOGGED_IN') {
-          return loggedIn;
-        } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
-          this.setState({
-            LoginStatus: 'LOGGED_IN'
-          });
-        } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
-          this.setState({
-            LoginStatus: 'NOT_LOGGED_IN'
-          });
-        }
-      }).catch(error => {
-        console.log('Error: ', error);
-      });
+  AuthorisedPages() {
+    return [
+      <Route exact path="/create" component={CreatePage} />,
+      <Route exact path="/users/:slug" component={ProfilePage} />
+    ]
   }
 
   render() {
@@ -82,7 +63,8 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/tables" component={Home} />
             <Route exact path="/whats-this" component={WhatsThis} />
-            <Route exact path="/create" component={CreatePage} />
+            {this.state.LoginStatus == "LOGGED_IN" ? this.AuthorisedPages()[0] : null}
+            {this.state.LoginStatus == "LOGGED_IN" ? this.AuthorisedPages()[1] : null}
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/login"
               render={props => (
@@ -93,7 +75,6 @@ export default class App extends Component {
               )}
             />
             <Route exact path="/tables/:slug" component={RandomTable} />
-            <Route exact path="/users/:slug" component={ProfilePage} />
             <Route component={ErrorPage} />
           </Switch>
 

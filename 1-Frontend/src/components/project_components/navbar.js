@@ -31,7 +31,11 @@ export default function (props) {
 
             <div className='auth-wrapper'>
                 <button><NavLink exact to="/signup" className="link"><FontAwesomeIcon icon="map" /> Sign up </NavLink></button>
-                <button><NavLink exact to="/login" className="link"><FontAwesomeIcon icon="circle-user" /> Log in </NavLink></button>
+
+                {props.LoggedInStatus === "LOGGED_IN" ?
+                    <button><NavLink exact to="/login" className="link"><FontAwesomeIcon icon="right-from-bracket" /> Log out </NavLink></button>
+                    :
+                    <button><NavLink exact to="/login" className="link"><FontAwesomeIcon icon="circle-user" /> Log in </NavLink></button>}
             </div>
         </div>
     );

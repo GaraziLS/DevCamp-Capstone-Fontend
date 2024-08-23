@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import RandomGenList from "../Creation_Page/gen-creator-list";
+import GeneratorList from "../Creation_Page/generator-list";
 
 
 export default class CreationManager extends Component {
@@ -12,9 +12,8 @@ export default class CreationManager extends Component {
     }
 
     getRandomTables() {
-        axios.get('http://localhost:5000/tables')
+        axios.get('http://localhost:5000/tables', { withCredentials: true })
             .then(response => {
-                console.log(response)
                 this.setState({
                     randomGeneratorList: [...response.data]
                 });
@@ -30,14 +29,16 @@ export default class CreationManager extends Component {
     render() {
         return (
             <div>
-                <h1>Here you can create random generators</h1>
                 <div className="creation-manager-wrapper">
                     <div className="upper-part-wrapper">
-                        <h1>Creation part</h1>
+                        <form>
+                            <input type="text" placeholder="Generator name" />
+                            <input type="dropdown"></input>
+                        </form>
                     </div>
                     <div className="lower-part-wrapper">
                         {this.state.randomGeneratorList.map(item => {
-                            return (<RandomGenList key={item.item_id} data={item} />)
+                            return (<GeneratorList key={item.item_id} data={item} />)
                         })}
 
                     </div>

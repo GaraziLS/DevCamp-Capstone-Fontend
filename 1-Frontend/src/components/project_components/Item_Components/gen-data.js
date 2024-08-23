@@ -10,7 +10,7 @@ export default class GenData extends Component {
     }
 
     RawData(item_id) {
-        axios.get('http://localhost:5000/tables' + item_id, { withCredentials: true })
+        axios.get('http://localhost:5000/tables' + item_id)
             .then(response => {
                 console.log("test", response);
             })

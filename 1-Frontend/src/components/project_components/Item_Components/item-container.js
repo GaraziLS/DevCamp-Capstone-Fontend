@@ -51,7 +51,7 @@ export default class ItemContainer extends Component {
                 <div>
                     <h2>Welcome</h2>
 
-                    <div className="container">
+                    <div className="homepage-wrapper">
                         <div className="filter">
                             <button>Characters</button>
                             <button>Objects</button>
@@ -61,7 +61,7 @@ export default class ItemContainer extends Component {
                             <button>Other</button>
                             <button>Filter All</button>
                         </div>
-                        <div className="items-wrapper">{this.singleGenerator()}</div>
+                        <div className="items-wrapper link">{this.singleGenerator()}</div>
                     </div>
                 </div>
             );
