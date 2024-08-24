@@ -12,24 +12,17 @@ export default class RandomTable extends Component {
         }
 
         this.getTable = this.getTable.bind(this);
-        this.getTableContent = this.getTableContent.bind(this);
     }
 
     getTable(item_id) {
         axios.get("http://localhost:5000/tables/" + item_id)
             .then(response => {
                 this.setState({ RandomTableContent: response.data });
-                console.log(response.data)
-                this.state.RandomTableContent.item_content = this.state.RandomTableContent.item_content.split(",")
+                const { RandomTableContent } = this.state
+                RandomTableContent.item_content = this.state.RandomTableContent.item_content.split(",")
             }).catch(error => {
                 console.log(error);
             });
-    };
-
-    getTableContent() {
-        return this.state.RandomTableContent.map(item => {
-            return (< GenData key={item.item_id} content={item.item_content} />)
-        });
     };
 
     componentDidMount() {
@@ -37,9 +30,11 @@ export default class RandomTable extends Component {
     }
 
     render() {
+        const { RandomTableContent } = this.state
         return (
             <div>
-                <h1>{this.state.RandomTableContent.item_title}</h1>
+                <h1>{RandomTableContent.item_title}</h1>
+                <div><GenData key={RandomTableContent.item_id} item_id={RandomTableContent.item_id} content={RandomTableContent.item_content} /></div>
                 <button>Roll!</button>
             </div>
         );
