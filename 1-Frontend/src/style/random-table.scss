@@ -1,0 +1,22 @@
+.random-table-wrapper {
+    display: grid;
+    grid-template-rows: 4fr 3fr 2fr;
+}
+
+.roll-button {
+    @include button-style;
+    height: 50px;
+    width: 100px;
+    padding: -5px;
+    font-size: 20px;
+}
+
+.gen-style {
+    align-self: center;
+    justify-self: center;
+}
+
+.gen-style:nth-child(1) {
+    font-size: 30px;
+    padding-top: 110px;
+}

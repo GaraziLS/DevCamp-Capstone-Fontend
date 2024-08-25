@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import GeneratorList from "../Creation_Page/generator-list";
+import GeneratorForm from "../Item_Components/generator-form"
 
 
 export default class CreationManager extends Component {
@@ -31,10 +32,7 @@ export default class CreationManager extends Component {
             <div>
                 <div className="creation-manager-wrapper">
                     <div className="upper-part-wrapper">
-                        <form>
-                            <input type="text" placeholder="Generator name" />
-                            <input type="dropdown"></input>
-                        </form>
+                        <GeneratorForm />
                     </div>
                     <div className="lower-part-wrapper">
                         {this.state.randomGeneratorList.map(item => {

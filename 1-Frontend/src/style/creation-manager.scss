@@ -1,4 +1,12 @@
 .creation-manager-wrapper {
     display: grid;
-    grid-template-rows: 1fr;
+    height: 700px;
+    grid-template-rows: 1fr 1fr;
+
+    .lower-part-wrapper {
+        height: 500px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }

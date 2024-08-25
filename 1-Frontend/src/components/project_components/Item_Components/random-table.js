@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import GenData from "../Item_Components/gen-data";
 
 
@@ -32,10 +33,10 @@ export default class RandomTable extends Component {
     render() {
         const { RandomTableContent } = this.state
         return (
-            <div>
-                <h1>{RandomTableContent.item_title}</h1>
-                <div><GenData key={RandomTableContent.item_id} item_id={RandomTableContent.item_id} content={RandomTableContent.item_content} /></div>
-                <button>Roll!</button>
+            <div className="random-table-wrapper">
+                <div className="gen-style">{RandomTableContent.item_title}</div>
+                <div className="gen-style"><GenData key={RandomTableContent.item_id} item_id={RandomTableContent.item_id} content={RandomTableContent.item_content} /></div>
+                <div className="gen-style"><button className="roll-button" onClick={() => window.location.reload()}> <FontAwesomeIcon icon="dice" /> Roll!</button></div>
             </div>
         );
     };

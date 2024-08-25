@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
+import LoadingIcon from "../../../../src/helpers/loading-status";
 
 export default class ItemContainer extends Component {
     constructor() {
@@ -45,7 +46,7 @@ export default class ItemContainer extends Component {
 
     render() {
         if (this.state.isLoading === true) {
-            return <div>Loading...</div>
+            return <LoadingIcon />
         } else {
             return (
                 <div>

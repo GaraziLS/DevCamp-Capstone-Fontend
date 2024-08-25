@@ -1,30 +1,30 @@
 import React, { Component } from "react";
 import axios from "axios";
+import LoadingIcon from "../../../../src/helpers/loading-status";
 
 export default class GenData extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            data: [],
+            data: null,
             contentArray: [],
             error: "",
             loading: true
         };
 
         this.getData = this.getData.bind(this);
+        this.randomizer = this.randomizer.bind(this);
     }
 
     getData() {
         if (!this.props.item_id) {
-            this.setState({ error: "Item ID is missing", loading: true });
+            this.setState({ error: "Item ID is missing", loading: false });
         } else {
-
             axios.get(`http://localhost:5000/tables/${this.props.item_id}`)
                 .then(response => {
                     const data = response.data;
                     const contentArray = data.item_content.split(","); // Split the item_content into an array
-                    console.log(contentArray)
 
                     this.setState({
                         data: data,
@@ -34,7 +34,7 @@ export default class GenData extends Component {
                 })
                 .catch(error => {
                     console.log('Error in the API:', error);
-                    this.setState({ error: error.message, loading: true });
+                    this.setState({ error: error.message, loading: false });
                 });
         }
     }
@@ -43,11 +43,16 @@ export default class GenData extends Component {
         this.getData();
     }
 
+    randomizer() {
+        const { contentArray } = this.state;
+        return contentArray[Math.floor(Math.random() * contentArray.length)];
+    }
+
     render() {
-        const { data, contentArray, error, loading } = this.state;
+        const { data, error, loading } = this.state;
 
         if (loading) {
-            return <div>Loading...</div>; // Show loading state until data is fetched
+            return <LoadingIcon /> // Show loading state until data is fetched
         }
 
         if (error) {
@@ -59,11 +64,7 @@ export default class GenData extends Component {
         }
 
         return (
-            <div>
-                {contentArray.map(item =>
-                    (item)
-                )}
-            </div>
-        );
+            <div className="random-result"><h2>{this.randomizer()}</h2></div>
+        )
     }
 }
