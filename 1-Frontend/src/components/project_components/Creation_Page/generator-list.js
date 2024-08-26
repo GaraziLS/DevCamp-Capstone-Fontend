@@ -12,6 +12,7 @@ const GeneratorList = (props) => {
 
         </div>
     );
+
 };
 
 export default GeneratorList;

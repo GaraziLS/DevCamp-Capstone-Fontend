@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
 import LoadingIcon from "../../../../src/helpers/loading-status";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icons from "../../../helpers/icons"
 
 export default class ItemContainer extends Component {
     constructor() {
@@ -50,17 +52,17 @@ export default class ItemContainer extends Component {
         } else {
             return (
                 <div>
-                    <h2>Welcome</h2>
+                    <h2>Welcome to the Home of Imagination</h2>
 
                     <div className="homepage-wrapper">
                         <div className="filter">
-                            <button>Characters</button>
-                            <button>Objects</button>
-                            <button>Quests</button>
-                            <button>Skills</button>
-                            <button>World</button>
-                            <button>Other</button>
-                            <button>Filter All</button>
+                            <button><FontAwesomeIcon icon="people-group" /> Characters</button>
+                            <button><FontAwesomeIcon icon="flask" /> Objects</button>
+                            <button><FontAwesomeIcon icon="scroll" /> Quests</button>
+                            <button><FontAwesomeIcon icon="book" /> Skills</button>
+                            <button><FontAwesomeIcon icon="earth-europe" /> World</button>
+                            <button><FontAwesomeIcon icon="box-open" /> Other</button>
+                            <button><FontAwesomeIcon icon="broom" /> Filter All</button>
                         </div>
                         <div className="items-wrapper link">{this.singleGenerator()}</div>
                     </div>

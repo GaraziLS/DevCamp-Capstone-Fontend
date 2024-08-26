@@ -10,6 +10,17 @@ export default class CreationManager extends Component {
         this.state = {
             randomGeneratorList: []
         };
+
+        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
+        this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
+    }
+
+    handleSuccessfulFormSubmission(item) {
+        console.log("test", item)
+    }
+
+    handleFormSubmissionError(error) {
+
     }
 
     getRandomTables() {
@@ -32,7 +43,9 @@ export default class CreationManager extends Component {
             <div>
                 <div className="creation-manager-wrapper">
                     <div className="upper-part-wrapper">
-                        <GeneratorForm />
+                        <GeneratorForm
+                            handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                            handleFormSubmissionError={this.handleFormSubmissionError} />
                     </div>
                     <div className="lower-part-wrapper">
                         {this.state.randomGeneratorList.map(item => {
