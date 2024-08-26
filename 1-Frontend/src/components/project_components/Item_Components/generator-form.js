@@ -52,7 +52,12 @@ export default class GeneratorForm extends Component {
             this.buildForm(),
             { withCredentials: true, headers: { "Content-Type": "application/json" } })
             .then(response => {
-                console.log("response", response)
+                this.props.handleSuccessfulFormSubmission(response.data)
+                this.setState({
+                    item_title: "",
+                    item_category: "Characters",
+                    item_content: "",
+                })
             }).catch(error => {
                 console.log("Something went wrong", error)
             })

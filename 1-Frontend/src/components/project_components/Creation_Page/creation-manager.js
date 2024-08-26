@@ -16,11 +16,13 @@ export default class CreationManager extends Component {
     }
 
     handleSuccessfulFormSubmission(item) {
-        console.log("test", item)
+        this.setState({
+            randomGeneratorList: [item].concat(this.state.randomGeneratorList)
+        })
     }
 
     handleFormSubmissionError(error) {
-
+        console.log("error", error)
     }
 
     getRandomTables() {
