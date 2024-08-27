@@ -21,6 +21,7 @@ h2 {
 
     .items-wrapper {
         display: grid;
+        padding-top: 15px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 20px;
         justify-items: center;

@@ -8,16 +8,32 @@ export default class CreationManager extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            randomGeneratorList: []
+            randomGeneratorList: [],
+            editGenerator: {}
         };
 
         this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
         this.handleDeleteItem = this.handleDeleteItem.bind(this)
+        this.handleEditItem = this.handleEditItem.bind(this)
+        this.handleClearEditItem = this.handleClearEditItem.bind(this)
+    }
+
+
+    handleEditItem(item) {
+        console.log("edit button should react", item)
+        this.setState({
+            editGenerator: item
+        })
+    }
+
+    handleClearEditItem() {
+        this.setState({
+            editGenerator: {}
+        })
     }
 
     handleDeleteItem(item) {
-        console.log("Deleting item with ID:", item.item_id);
         axios.delete(`http://localhost:5000/tables/${item.item_id}`, { withCredentials: true })
             .then(_response => {
                 this.setState({
@@ -61,11 +77,18 @@ export default class CreationManager extends Component {
                     <div className="upper-part-wrapper">
                         <GeneratorForm
                             handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
-                            handleFormSubmissionError={this.handleFormSubmissionError} />
+                            handleFormSubmissionError={this.handleFormSubmissionError}
+                            handleEditItem={this.state.editGenerator}
+                            handleClearEditItem={this.handleClearEditItem}
+                        />
                     </div>
                     <div className="lower-part-wrapper">
                         {this.state.randomGeneratorList.map(item => {
-                            return (<GeneratorList key={item.item_id} data={item} handleDeleteItem={this.handleDeleteItem} />)
+                            return (<GeneratorList key={item.item_id} data={item}
+                                handleDeleteItem={this.handleDeleteItem}
+                                handleEditItem={this.handleEditItem}
+                                handleClearEditItem={this.handleClearEditItem}
+                            />)
                         })}
 
                     </div>

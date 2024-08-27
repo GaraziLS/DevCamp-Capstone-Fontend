@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const GeneratorList = (props) => {
-    const RawData = props.data;
-    return (
-        <div>
-            <h1>{RawData.item_id}</h1>
-            <h2>{RawData.item_title}</h2>
+export default class GeneratorList extends Component {
+    constructor(props) {
+        super(props);
 
-            <button>Edit</button>
-            <button onClick={() => props.handleDeleteItem(RawData)}>Delete</button>
+        this.state = {
+            RawData: this.props.data,
+        }
 
-        </div>
-    );
+    }
 
-};
+    render() {
+        return (
+            <div>
+                <div className="item-list-wrapper">
+                    <div className="items-in-list">
+                        <h2>{this.state.RawData.item_id}</h2>
+                        <h2>{this.state.RawData.item_title}</h2>
+                    </div>
 
-export default GeneratorList;
+                    <div className="buttons">
+                        <button className="generator-list-btn" onClick={() => this.props.handleEditItem(this.state.RawData)}>Edit</button>
+                        <button className="generator-list-btn" onClick={() => this.props.handleDeleteItem(this.state.RawData)}>Delete</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+}
+
+

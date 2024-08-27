@@ -17,25 +17,28 @@ export default class GeneratorForm extends Component {
         this.buildForm = this.buildForm.bind(this)
     }
 
+
+
+    componentDidUpdate(prevProps) {
+        console.log("componentDidUpdate triggered")
+        if (prevProps.handleEditItem !== this.props.handleEditItem && Object.keys(this.props.handleEditItem).length > 0) {
+            console.log("Updating state with:", this.props.handleEditItem);
+            this.setState({
+                item_title: this.props.handleEditItem.item_title || "",
+                item_category: this.props.handleEditItem.item_category || "",
+                item_content: this.props.handleEditItem.item_content || ""
+            })
+
+            this.props.handleClearEditItem()
+        }
+    }
+
     buildForm() {
         let formData = new FormData();
 
         formData.append("Item[item_title]", this.state.item_title);
         formData.append("Item[item_content]", this.state.item_content);
         formData.append("Item[item_category]", this.state.item_category);
-
-
-        if (this.state.item_title) {
-            formData.append("Item[item_title]", this.state.item_title);
-        }
-
-        if (this.state.item_content) {
-            formData.append("Item[item_content]", this.state.item_content);
-        }
-
-        if (this.state.item_category) {
-            formData.append("Item[item_category]", this.state.item_category);
-        }
 
         return formData;
     }
@@ -65,6 +68,9 @@ export default class GeneratorForm extends Component {
     }
 
     render() {
+        console.log("Current props:", this.props);
+        console.log("Current state:", this.state);
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -80,12 +86,12 @@ export default class GeneratorForm extends Component {
                         value={this.state.item_category}
                         onChange={this.handleChange}
                     >
-                        <option value="characters">Characters</option>
-                        <option value="objects">Objects</option>
-                        <option value="quests">Quests</option>
-                        <option value="skills">Skills</option>
-                        <option value="world">World</option>
-                        <option value="other">Other</option>
+                        <option value="Characters">Characters</option>
+                        <option value="Objects">Objects</option>
+                        <option value="Quests">Quests</option>
+                        <option value="Skills">Skills</option>
+                        <option value="World">World</option>
+                        <option value="Other">Other</option>
                     </select>
                     <div>
                         <textarea
