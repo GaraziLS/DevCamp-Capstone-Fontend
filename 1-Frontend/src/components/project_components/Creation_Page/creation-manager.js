@@ -13,7 +13,21 @@ export default class CreationManager extends Component {
 
         this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
+        this.handleDeleteItem = this.handleDeleteItem.bind(this)
     }
+
+    handleDeleteItem(item) {
+        console.log("Deleting item with ID:", item.item_id);
+        axios.delete(`http://localhost:5000/tables/${item.item_id}`, { withCredentials: true })
+            .then(_response => {
+                this.setState({
+                    randomGeneratorList: this.state.randomGeneratorList.filter(i => i.item_id !== item.item_id)
+                });
+            })
+            .catch(error => {
+                console.log("error deleting", error)
+            });
+    };
 
     handleSuccessfulFormSubmission(item) {
         this.setState({
@@ -51,7 +65,7 @@ export default class CreationManager extends Component {
                     </div>
                     <div className="lower-part-wrapper">
                         {this.state.randomGeneratorList.map(item => {
-                            return (<GeneratorList key={item.item_id} data={item} />)
+                            return (<GeneratorList key={item.item_id} data={item} handleDeleteItem={this.handleDeleteItem} />)
                         })}
 
                     </div>

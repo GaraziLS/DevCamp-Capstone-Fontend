@@ -1,6 +1,6 @@
 # Intro
 
-This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone.
+This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone. Thus, there are no images on this site.
 
 ## First Steps: Building a Navbar
 

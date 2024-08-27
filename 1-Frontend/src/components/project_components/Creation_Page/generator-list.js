@@ -8,7 +8,7 @@ const GeneratorList = (props) => {
             <h2>{RawData.item_title}</h2>
 
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => props.handleDeleteItem(RawData)}>Delete</button>
 
         </div>
     );
