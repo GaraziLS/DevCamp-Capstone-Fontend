@@ -6,41 +6,51 @@ export default class GeneratorForm extends Component {
         super(props);
 
         this.state = {
+            item_id: "",
             item_title: "",
             item_category: "Characters",
             item_content: "",
+            editMode: false,
+            apiUrl: "http://localhost:5000/create",
+            apiAction: "post"
+        };
 
-        }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.buildForm = this.buildForm.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.buildForm = this.buildForm.bind(this);
     }
 
-
-
     componentDidUpdate(prevProps) {
-        console.log("componentDidUpdate triggered")
-        if (prevProps.handleEditItem !== this.props.handleEditItem && Object.keys(this.props.handleEditItem).length > 0) {
-            console.log("Updating state with:", this.props.handleEditItem);
+        if (
+            prevProps.handleEditItem !== this.props.handleEditItem &&
+            Object.keys(this.props.handleEditItem).length > 0
+        ) {
             this.setState({
+                item_id: this.props.handleEditItem.item_id || "",
                 item_title: this.props.handleEditItem.item_title || "",
                 item_category: this.props.handleEditItem.item_category || "",
-                item_content: this.props.handleEditItem.item_content || ""
-            })
+                item_content: this.props.handleEditItem.item_content || "",
+                editMode: true,
+                apiUrl: `http://localhost:5000/tables/${this.props.handleEditItem.item_id}`,
+                apiAction: "put"
+            });
 
-            this.props.handleClearEditItem()
+            this.props.handleClearEditItem();
         }
     }
 
     buildForm() {
         let formData = new FormData();
-
         formData.append("Item[item_title]", this.state.item_title);
         formData.append("Item[item_content]", this.state.item_content);
         formData.append("Item[item_category]", this.state.item_category);
+        console.log("FormData being sent:", formData);
 
+        for (let [key, value] of formData.entries()) {
+            console.log("FormData entry:", key, value);
+        }
         return formData;
+
     }
 
     handleChange(event) {
@@ -50,27 +60,42 @@ export default class GeneratorForm extends Component {
     }
 
     handleSubmit(event) {
-        axios.post(
-            "http://localhost:5000/create",
-            this.buildForm(),
-            { withCredentials: true, headers: { "Content-Type": "application/json" } })
+        event.preventDefault();
+        axios({
+            method: this.state.apiAction,
+            url: this.state.apiUrl,
+            data: this.buildForm(),
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
             .then(response => {
-                this.props.handleSuccessfulFormSubmission(response.data)
+                console.log("Handling edit form submission", response);
+                if (this.state.editMode) {
+                    this.props.handleEditFormSubmission();
+                } else {
+                    console.log("Handling new form submission", response);
+                    this.props.handleNewFormSubmission(response.data);
+                }
+
+                // Reset the form state
                 this.setState({
+                    item_id: "",
                     item_title: "",
                     item_category: "Characters",
                     item_content: "",
-                })
-            }).catch(error => {
-                console.log("Something went wrong", error)
+                    editMode: false,
+                    apiUrl: "http://localhost:5000/create",
+                    apiAction: "post"
+                });
             })
-        event.preventDefault();
+            .catch(error => {
+                console.log("Something went wrong", error);
+            });
     }
 
     render() {
-        console.log("Current props:", this.props);
-        console.log("Current state:", this.state);
-
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -95,7 +120,6 @@ export default class GeneratorForm extends Component {
                     </select>
                     <div>
                         <textarea
-                            type="text"
                             name='item_content'
                             placeholder="Write your generator's content here. Use commas (,) to separate values, please."
                             value={this.state.item_content}
@@ -106,5 +130,5 @@ export default class GeneratorForm extends Component {
                 </form>
             </div>
         );
-    };
+    }
 }

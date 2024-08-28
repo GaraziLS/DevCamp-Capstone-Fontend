@@ -29,4 +29,3 @@ export default class GeneratorList extends Component {
     };
 }
 
-

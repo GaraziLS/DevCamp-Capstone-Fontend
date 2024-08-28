@@ -12,7 +12,8 @@ export default class CreationManager extends Component {
             editGenerator: {}
         };
 
-        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
+        this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this)
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this)
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
         this.handleDeleteItem = this.handleDeleteItem.bind(this)
         this.handleEditItem = this.handleEditItem.bind(this)
@@ -21,7 +22,6 @@ export default class CreationManager extends Component {
 
 
     handleEditItem(item) {
-        console.log("edit button should react", item)
         this.setState({
             editGenerator: item
         })
@@ -45,7 +45,11 @@ export default class CreationManager extends Component {
             });
     };
 
-    handleSuccessfulFormSubmission(item) {
+    handleEditFormSubmission() {
+        this.getRandomTables();
+    }
+
+    handleNewFormSubmission(item) {
         this.setState({
             randomGeneratorList: [item].concat(this.state.randomGeneratorList)
         })
@@ -76,7 +80,8 @@ export default class CreationManager extends Component {
                 <div className="creation-manager-wrapper">
                     <div className="upper-part-wrapper">
                         <GeneratorForm
-                            handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                            handleNewFormSubmission={this.handleNewFormSubmission}
+                            handleEditFormSubmission={this.handleEditFormSubmission}
                             handleFormSubmissionError={this.handleFormSubmissionError}
                             handleEditItem={this.state.editGenerator}
                             handleClearEditItem={this.handleClearEditItem}
