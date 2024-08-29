@@ -3,7 +3,7 @@ import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
 import LoadingIcon from "../../../../src/helpers/loading-status";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Icons from "../../../helpers/icons"
+import { NavLink } from "react-router-dom"
 
 export default class ItemContainer extends Component {
     constructor() {
@@ -19,6 +19,7 @@ export default class ItemContainer extends Component {
 
         this.getAllTables = this.getAllTables.bind(this);
         this.singleGenerator = this.singleGenerator.bind(this);
+        this.handleFilter = this.handleFilter.bind(this)
 
     };
 
@@ -34,6 +35,7 @@ export default class ItemContainer extends Component {
             });
     };
 
+
     // Data Container
     singleGenerator() {
         return this.state.data.map(item => {
@@ -41,9 +43,21 @@ export default class ItemContainer extends Component {
         })
     }
 
-
     componentDidMount() {
         this.getAllTables()
+    }
+
+    handleFilter(filter) {
+        if (filter === "Filter All") {
+            return this.getAllTables();
+        } else {
+            this.setState(prevState => ({
+                data: prevState.data.filter(
+                    item => item.item_category === filter
+                )
+            })
+            )
+        }
     }
 
     render() {
@@ -53,16 +67,17 @@ export default class ItemContainer extends Component {
             return (
                 <div>
                     <h2>Welcome to the Home of Imagination</h2>
+                    <h5>(Click <NavLink className="link" exact to="/whats-this">here</NavLink> to learn how this site works)</h5>
 
                     <div className="homepage-wrapper">
                         <div className="filter">
-                            <button><FontAwesomeIcon icon="people-group" /> Characters</button>
-                            <button><FontAwesomeIcon icon="flask" /> Objects</button>
-                            <button><FontAwesomeIcon icon="scroll" /> Quests</button>
-                            <button><FontAwesomeIcon icon="book" /> Skills</button>
-                            <button><FontAwesomeIcon icon="earth-europe" /> World</button>
-                            <button><FontAwesomeIcon icon="box-open" /> Other</button>
-                            <button><FontAwesomeIcon icon="broom" /> Filter All</button>
+                            <button onClick={() => this.handleFilter("Characters")}><FontAwesomeIcon icon="people-group" /> Characters</button>
+                            <button onClick={() => this.handleFilter("Objects")}><FontAwesomeIcon icon="flask" /> Objects</button>
+                            <button onClick={() => this.handleFilter("Quests")}><FontAwesomeIcon icon="scroll" /> Quests</button>
+                            <button onClick={() => this.handleFilter("Skills")}><FontAwesomeIcon icon="book" /> Skills</button>
+                            <button onClick={() => this.handleFilter("World")}><FontAwesomeIcon icon="earth-europe" /> World</button>
+                            <button onClick={() => this.handleFilter("Other")}><FontAwesomeIcon icon="box-open" /> Other</button>
+                            <button onClick={() => this.handleFilter("Filter All")}><FontAwesomeIcon icon="broom" /> Filter All</button>
                         </div>
                         <div className="items-wrapper link">{this.singleGenerator()}</div>
                     </div>
