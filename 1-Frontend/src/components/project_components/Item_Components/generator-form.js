@@ -103,6 +103,7 @@ export default class GeneratorForm extends Component {
                         type="text"
                         name="item_title"
                         placeholder="Generator name"
+                        label="Generator name"
                         value={this.state.item_title}
                         onChange={this.handleChange}
                     />
@@ -122,6 +123,7 @@ export default class GeneratorForm extends Component {
                         <textarea
                             name="item_content"
                             placeholder="Write your generator's content here. Use commas (,) to separate values, please."
+                            label="Write your generator's content here. Use commas (,) to separate values, please."
                             value={this.state.item_content}
                             onChange={this.handleChange}
                         />

@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import SearchBar from "../project_components/Search_Bar/search-bar";
+
 
 export default function (props) {
     return (
@@ -18,16 +20,7 @@ export default function (props) {
 
             </div>
 
-            <div className='search-wrapper'>
-                <div className='search-field'>
-                    <input
-                        type='text'
-                        placeholder='Search generators'
-                    >
-                    </input>
-                    <button><FontAwesomeIcon icon="magnifying-glass" /> Search</button>
-                </div>
-            </div>
+            <SearchBar />
 
             <div className='auth-wrapper'>
                 <button><NavLink exact to="/signup" className="link"><FontAwesomeIcon icon="map" /> Sign up </NavLink></button>
