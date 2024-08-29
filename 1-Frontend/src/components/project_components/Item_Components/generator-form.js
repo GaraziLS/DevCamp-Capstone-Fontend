@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import axios from 'axios';
 
 export default class GeneratorForm extends Component {
     constructor(props) {
@@ -35,22 +35,23 @@ export default class GeneratorForm extends Component {
                 apiAction: "put"
             });
 
+            // Clear the edit item from props
             this.props.handleClearEditItem();
         }
     }
 
     buildForm() {
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append("Item[item_title]", this.state.item_title);
         formData.append("Item[item_content]", this.state.item_content);
         formData.append("Item[item_category]", this.state.item_category);
-        console.log("FormData being sent:", formData);
 
+        // Logging FormData entries for debugging
         for (let [key, value] of formData.entries()) {
             console.log("FormData entry:", key, value);
         }
-        return formData;
 
+        return formData;
     }
 
     handleChange(event) {
@@ -61,6 +62,7 @@ export default class GeneratorForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
         axios({
             method: this.state.apiAction,
             url: this.state.apiUrl,
@@ -71,11 +73,9 @@ export default class GeneratorForm extends Component {
             }
         })
             .then(response => {
-                console.log("Handling edit form submission", response);
                 if (this.state.editMode) {
                     this.props.handleEditFormSubmission();
                 } else {
-                    console.log("Handling new form submission", response);
                     this.props.handleNewFormSubmission(response.data);
                 }
 
@@ -120,11 +120,11 @@ export default class GeneratorForm extends Component {
                     </select>
                     <div>
                         <textarea
-                            name='item_content'
+                            name="item_content"
                             placeholder="Write your generator's content here. Use commas (,) to separate values, please."
                             value={this.state.item_content}
-                            onChange={this.handleChange}>
-                        </textarea>
+                            onChange={this.handleChange}
+                        />
                     </div>
                     <button type="submit">Save generator</button>
                 </form>

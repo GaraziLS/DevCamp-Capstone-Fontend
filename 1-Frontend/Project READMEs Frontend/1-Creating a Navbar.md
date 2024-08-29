@@ -8,6 +8,7 @@ This project is the DevCamp Full Stack Capstone project, and this document will 
 
 * Sometimes, also when the console is open, the connection will be refused despite having wifi available. Re-start the server in those cases.
 
+
 ## First Steps: Building a Navbar
 
 To start off, we'll build a skeleton for the navbar. Inside the **src > Components** we'll create a new folder called **project_components**, where all of our components will be. Inside, we'll create a file named **navbar.js**. This component will be a functional component since it only renders content (the navlinks in this case, plus a searchbar and a login button). We'll also add classes to style everything later on, and since we're rendering navlinks we'll first need to import a few dependencies. So, for now, we should have this:

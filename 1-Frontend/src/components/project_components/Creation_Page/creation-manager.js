@@ -46,6 +46,7 @@ export default class CreationManager extends Component {
     };
 
     handleEditFormSubmission() {
+        console.log("edit form")
         this.getRandomTables();
     }
 
