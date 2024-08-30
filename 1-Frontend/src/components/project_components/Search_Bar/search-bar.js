@@ -46,7 +46,7 @@ const SearchBar = () => {
             {enteredWord && (
                 <div className="search-results">
                     {filteredData.length !== 0 ? (
-                        filteredData.map(item => (
+                        filteredData.slice(0, 10).map(item => (
                             <SingleItem
                                 key={item.item_id}
                                 item_id={item.item_id}
