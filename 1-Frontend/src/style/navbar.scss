@@ -115,6 +115,7 @@
             grid-template-columns: 1fr;
             justify-content: center;
             align-items: center;
+            position: relative;
 
             .search-field {
                 display: grid;
@@ -126,7 +127,7 @@
                     border: none;
                     padding: 5px;
                     width: 100%;
-                    align-self: flex-start;
+                    align-self: center;
                 }
 
                 input:focus {
@@ -141,16 +142,20 @@
 
             .search-results {
                 width: 26.5vw;
-                height: 12vh;
+                max-height: 12vh;
                 background-color: $SearchBar;
                 overflow: hidden;
                 overflow-y: auto;
+                position: absolute;
+                top: 80%;
+
 
                 &::-webkit-scrollbar {
                     display: none;
                 }
 
-                &>.link {
+                &>.link,
+                p {
                     text-align: center;
                     font-size: 13px;
 
