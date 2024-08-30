@@ -80,6 +80,7 @@ export default class LoginComponent extends Component {
                         type="text"
                         name="username"
                         placeholder="Type your username"
+                        label="Type your username"
                         value={this.state.username}
                         onChange={this.handleLoginChange}>
                     </input>
@@ -88,6 +89,7 @@ export default class LoginComponent extends Component {
                         type="password"
                         name="password"
                         placeholder="Type your password"
+                        label="Type your password"
                         value={this.state.password}
                         onChange={this.handleLoginChange}>
                     </input>

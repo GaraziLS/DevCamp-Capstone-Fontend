@@ -46,11 +46,6 @@ export default class GeneratorForm extends Component {
         formData.append("Item[item_content]", this.state.item_content);
         formData.append("Item[item_category]", this.state.item_category);
 
-        // Logging FormData entries for debugging
-        for (let [key, value] of formData.entries()) {
-            console.log("FormData entry:", key, value);
-        }
-
         return formData;
     }
 
@@ -109,15 +104,16 @@ export default class GeneratorForm extends Component {
                     />
                     <select
                         name="item_category"
+                        label="item_category"
                         value={this.state.item_category}
                         onChange={this.handleChange}
                     >
-                        <option value="Characters">Characters</option>
-                        <option value="Objects">Objects</option>
-                        <option value="Quests">Quests</option>
-                        <option value="Skills">Skills</option>
-                        <option value="World">World</option>
-                        <option value="Other">Other</option>
+                        <option value="Characters" label="Characters">Characters</option>
+                        <option value="Objects" label="Objects">Objects</option>
+                        <option value="Quests" label="Quests">Quests</option>
+                        <option value="Skills" label="Skills">Skills</option>
+                        <option value="World" label="World">World</option>
+                        <option value="Other" label="Other">Other</option>
                     </select>
                     <div>
                         <textarea

@@ -65,7 +65,7 @@ export default class ItemContainer extends Component {
             return <LoadingIcon />
         } else {
             return (
-                <div>
+                <div className="header">
                     <h2>Welcome to the Home of Imagination</h2>
                     <h5>(Click <NavLink className="link" exact to="/whats-this">here</NavLink> to learn how this site works)</h5>
 

@@ -33,5 +33,3 @@ export default function (props) {
         </div>
     );
 }
-
-/* TODO: Put a route guard to access the Create and Profile pages only when logged in */

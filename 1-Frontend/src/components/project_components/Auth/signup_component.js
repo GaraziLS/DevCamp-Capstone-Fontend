@@ -36,6 +36,7 @@ export default class SignupComponent extends Component {
                         type="email"
                         name="email"
                         placeholder="Type your email"
+                        label="Type your email"
                         value={this.state.email}
                         onChange={this.handleSignupChange}>
                     </input>
@@ -44,6 +45,7 @@ export default class SignupComponent extends Component {
                         type="text"
                         name="username"
                         placeholder="Type your username"
+                        label="Type your username"
                         value={this.state.username}
                         onChange={this.handleSignupChange}>
                     </input>
@@ -52,6 +54,7 @@ export default class SignupComponent extends Component {
                         type="password"
                         name="password"
                         placeholder="Type your password"
+                        label="Type your password"
                         value={this.state.password}
                         onChange={this.handleSignupChange}>
                     </input>

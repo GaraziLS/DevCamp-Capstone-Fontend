@@ -6,7 +6,7 @@ This project is the DevCamp Full Stack Capstone project, and this document will 
 
 * For some reason, when the chrome console is open and you're on the error page (when trying to access the creation page but you're unlogged) the login button doesn't respond. Use the link in that page instead.
 
-* Sometimes, also when the console is open, the connection will be refused despite having wifi available. Re-start the server in those cases.
+* When the console is open, the connection will be refused despite having wifi available if you try to refresh the page with the console open. Re-start the server or close the console and reload the page.
 
 
 ## First Steps: Building a Navbar

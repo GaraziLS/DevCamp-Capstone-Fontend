@@ -18,7 +18,8 @@ h6 {
     text-align: center;
 }
 
-.link {
+.link,
+.link>a {
     color: $HoverBlue;
     text-decoration: none;
     cursor: pointer;
