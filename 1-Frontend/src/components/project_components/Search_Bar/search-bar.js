@@ -57,7 +57,7 @@ const SearchBar = () => {
                             />
                         ))
                     ) : (
-                        <p>No results found. Do you want to <NavLink to="/create" className="link">create</NavLink> one?</p>
+                        <p>This generator was not found. Do you want to <NavLink to="/create" className="link">create</NavLink> one?</p>
                     )}
                 </div>
             )}

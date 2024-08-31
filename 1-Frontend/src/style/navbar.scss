@@ -8,6 +8,8 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
+        position: sticky;
+        top: 0%;
 
         .navlink-wrapper {
             display: flex;
@@ -29,12 +31,14 @@
 
         .search-wrapper {
             display: grid;
+            grid-template-columns: 1fr;
             justify-content: center;
             align-items: center;
+            position: relative;
 
             .search-field {
                 display: grid;
-                grid-template-columns: 4fr 1fr;
+                grid-template-columns: 2fr 0.5fr;
                 gap: 10px;
 
                 input {
@@ -42,7 +46,7 @@
                     border: none;
                     padding: 5px;
                     width: 100%;
-                    align-self: flex-start;
+                    align-self: center;
                 }
 
                 input:focus {
@@ -51,33 +55,60 @@
 
                 input::placeholder {
                     text-align: center;
-                    color: $MainColor;
+                    color: black;
                 }
             }
 
-        }
+            .search-results {
+                width: 26.5vw;
+                max-height: 12vh;
+                background-color: $SearchBar;
+                overflow: hidden;
+                overflow-y: auto;
+                position: absolute;
+                top: 80%;
 
-        .auth-wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20px;
-            gap: 10px;
 
-            button {
-                @include button-style;
-                padding: 5px;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
 
-                .link {
-                    @include link-style;
-                    color: white;
+                &>.link,
+                p {
+                    text-align: center;
+                    font-size: 13px;
 
+                    &:hover {
+                        color: $MainColor;
+                        background-color: $SearchHover;
+                    }
                 }
             }
         }
     }
+
 }
+
+.auth-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 10px;
+
+    button {
+        @include button-style;
+        padding: 5px;
+
+        .link {
+            @include link-style;
+            color: white;
+
+        }
+    }
+}
+
 
 
 /* MEDIA QUERIES FOR DESKTOP */
@@ -90,6 +121,8 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        position: sticky;
+        top: 0%;
 
         .navlink-wrapper {
             display: flex;
@@ -136,7 +169,7 @@
 
                 input::placeholder {
                     text-align: center;
-                    color: $MainColor;
+                    color: black;
                 }
             }
 
