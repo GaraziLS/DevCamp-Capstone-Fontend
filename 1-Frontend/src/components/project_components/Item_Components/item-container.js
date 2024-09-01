@@ -62,7 +62,7 @@ export default class ItemContainer extends Component {
 
     render() {
         if (this.state.isLoading === true) {
-            return <LoadingIcon />
+            return <h3><LoadingIcon /></h3>
         } else {
             return (
                 <div className="header">

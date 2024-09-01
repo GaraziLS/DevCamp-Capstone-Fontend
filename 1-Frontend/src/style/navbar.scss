@@ -11,6 +11,7 @@
         position: sticky;
         top: 0%;
 
+
         .navlink-wrapper {
             display: flex;
             flex-direction: column;
@@ -38,14 +39,13 @@
 
             .search-field {
                 display: grid;
-                grid-template-columns: 2fr 0.5fr;
+                grid-template-columns: 1fr;
                 gap: 10px;
 
                 input {
                     background-color: $SearchBar;
                     border: none;
                     padding: 5px;
-                    width: 100%;
                     align-self: center;
                 }
 
@@ -56,11 +56,13 @@
                 input::placeholder {
                     text-align: center;
                     color: black;
+                    font-size: 13px;
+                    font-weight: 500;
                 }
             }
 
             .search-results {
-                width: 26.5vw;
+                width: 94.5vw;
                 max-height: 12vh;
                 background-color: $SearchBar;
                 overflow: hidden;
@@ -85,30 +87,40 @@
                 }
             }
         }
-    }
 
-}
+        .auth-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
 
-.auth-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    gap: 10px;
+            button {
+                @include button-style;
+                padding: 5px;
 
-    button {
-        @include button-style;
-        padding: 5px;
+                .link {
+                    @include link-style;
+                    color: white;
 
-        .link {
-            @include link-style;
-            color: white;
+                    &:hover {
+                        color: $BackgroundWhite;
+                    }
+                }
 
+                .login>.link>.user-icon {
+                    color: #EBEBEB;
+
+                    &:hover {
+                        color: #EBEBEB;
+                    }
+                }
+            }
         }
     }
 }
-
 
 
 /* MEDIA QUERIES FOR DESKTOP */
@@ -170,6 +182,7 @@
                 input::placeholder {
                     text-align: center;
                     color: black;
+                    font-size: 500;
                 }
             }
 
@@ -180,8 +193,7 @@
                 overflow: hidden;
                 overflow-y: auto;
                 position: absolute;
-                top: 80%;
-
+                top: 70%;
 
                 &::-webkit-scrollbar {
                     display: none;

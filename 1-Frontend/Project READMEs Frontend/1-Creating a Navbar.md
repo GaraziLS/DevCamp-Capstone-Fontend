@@ -209,6 +209,18 @@ Now, we can place icons where we want. To do so we must call the FontAwesome com
 
 To test that everything's going right, go to the project folder and type ``npm run start``.
 
+## Navbar adjustment
+
+We want the nabvar to stay on top of the page and visible when we're scrolling down. To do this, just type this in the css stylesheet:
+
+```
+.navbar-wrapper {
+    position: sticky;
+    top: 0%;
+```
+
+
+
 ## Creating an API
 
 We need an API to continue with the project, so before proceeding we'll create one. Go to the Backend folder and search for the Project READMEs to know how to create one.
