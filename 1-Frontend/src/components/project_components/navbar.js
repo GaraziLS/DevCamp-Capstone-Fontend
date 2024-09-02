@@ -10,7 +10,7 @@ export default function (props) {
         <div className='navbar-wrapper'>
             <div className='navlink-wrapper'>
                 <NavLink exact to="/" className="link" activeClassName="active-link"><FontAwesomeIcon icon="home" /> Home</NavLink>
-                <NavLink exact to="/whats-this" className="link" activeClassName="active-link"><FontAwesomeIcon icon='circle-info' /> What's this?</NavLink>
+                <NavLink exact to="/whats-this" className="link" activeClassName="active-link"><FontAwesomeIcon icon='circle-info' /> About this site</NavLink>
 
                 {props.LoggedInStatus === "LOGGED_IN" ?
                     <NavLink exact to="/create" className="link" activeClassName="active-link"><FontAwesomeIcon icon='magic-wand-sparkles' /> Create</NavLink> : null}

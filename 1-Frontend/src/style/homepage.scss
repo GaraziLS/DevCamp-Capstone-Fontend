@@ -1,3 +1,55 @@
+// MEDIA QUERIES FOR MOBILE
+
+@media (max-width: 425px) {
+
+.header {
+    padding-top: 15px;
+}
+
+
+.homepage-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+
+    .filter {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        top:23%;
+
+        button {
+            @include button-style;
+            padding: 5px;
+        }
+    }
+
+    .items-wrapper {
+        display: grid;
+        padding-top: 15px;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        justify-items: center;
+        align-items: center;
+
+        .link>a {
+            @include link-style;
+            border-bottom: dashed 1px;
+
+        }
+
+    }
+}
+}
+
+
+// MEDIA QUERIES FOR DESKTOP
+
+@media (min-width: 425px) {
+
 .header {
     padding-top: 30px;
 }
@@ -29,7 +81,9 @@
 
         .link>a {
             @include link-style;
+            border-bottom: 1px dashed;
         }
 
     }
+}
 }

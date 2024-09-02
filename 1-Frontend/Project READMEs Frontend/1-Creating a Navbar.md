@@ -1,12 +1,12 @@
 # Intro
 
-This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone. Thus, there are no images on this site.
+This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone. 
 
 ### Considerations to navigate the site without bugs
 
 * For some reason, when the chrome console is open and you're on the error page (when trying to access the creation page but you're unlogged) the login button doesn't respond. Use the link in that page instead.
 
-* When the console is open, the connection will be refused despite having wifi available if you try to refresh the page with the console open. Re-start the server or close the console and reload the page.
+* When the console is open and you refresh the page to see the changes that were made, the connection will be refused despite having wifi available. Re-start the server or close the console and reload the page to fix the issue.
 
 
 ## First Steps: Building a Navbar

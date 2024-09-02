@@ -10,6 +10,7 @@
         grid-template-columns: 1fr;
         position: sticky;
         top: 0%;
+        z-index: 1000;
 
 
         .navlink-wrapper {
@@ -57,7 +58,7 @@
                     text-align: center;
                     color: black;
                     font-size: 13px;
-                    font-weight: 500;
+                    font-weight: 450;
                 }
             }
 
@@ -135,6 +136,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         position: sticky;
         top: 0%;
+        z-index: 1000;
 
         .navlink-wrapper {
             display: flex;
@@ -182,7 +184,7 @@
                 input::placeholder {
                     text-align: center;
                     color: black;
-                    font-size: 500;
+                    font-weight: 450;
                 }
             }
 
