@@ -24,12 +24,6 @@ export default function() {
         </p>
     </AccordionTab>
                 
-    <AccordionTab header="What are those blue buttons that are above the links in the middle of the screen?">
-        <p className="accordion-item">
-            Those are the filters. Click one and the links will be filtered by their category. It's important to note that once you click on a filter you can't click again in another button, after each filtering you have to click Filter All to reset everything. Once done, you can click in another category button.
-        </p>
-    </AccordionTab>
-                
     <AccordionTab header="What does each category mean?">
         <p className="accordion-item">
             <ul>

@@ -5,10 +5,10 @@ import FAQ from "../project_components/FAQ"
 export default function AboutThis() {
     return (
         <div className="page-wrapper">
-            <h2>About this site</h2>
+            <h2 className="header">About this site</h2>
 
             <div className="text-wrapper">
-                <p>This site is built as part of the Bottega DevCamp Full Stack course, it's the Capstone project. The code is available <a href="https://github.com/GaraziLS/DevCamp-FullStack-Project-Backend" className="link">here (backend)</a> and <a href="https://github.com/GaraziLS/DevCamp-Full-Stack-Project-Frontend" className="link">here (frontend).</a> Feel free to read the READMEs to learn about how the site was built.The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone.
+                <p>This site is built as part of the Bottega DevCamp Full Stack course, it's the Capstone project. The code is available <a href="https://github.com/GaraziLS/DevCamp-FullStack-Project-Backend" className="link">here (backend)</a> and <a href="https://github.com/GaraziLS/DevCamp-Full-Stack-Project-Frontend" className="link">here (frontend).</a> Feel free to read the READMEs to learn about how the site was built. The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone.
                 
                 <p>Considerations to navigate the site without bugs:
 
@@ -22,7 +22,7 @@ export default function AboutThis() {
                         </ul></p>
                 </p>
 
-                <h2>How to use the site: Frequently Asked Questions</h2>
+                <h2 className="header">How to use the site: Frequently Asked Questions</h2>
 
                     <FAQ/>
             </div>

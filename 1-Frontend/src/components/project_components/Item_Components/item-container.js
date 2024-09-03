@@ -66,15 +66,17 @@ export default class ItemContainer extends Component {
             return <h3><LoadingIcon /></h3>
         } else {
             return (
-                <div className="header">
-                    <h3>Welcome to the</h3>
-                    <h1>HOME OF IMAGINATION</h1>
-                    <h5>(<NavLink className="link" exact to="/whats-this">Click here to learn how this site works</NavLink>)</h5>
+                <div>
+                    <div>
+                        <h3>Welcome to the</h3>
+                        <h1>HOME OF IMAGINATION</h1>
+                        <h5>(<NavLink className="link" exact to="/whats-this">Click here to learn how this site works</NavLink>)</h5>
+                    </div>
 
                     <div className="homepage-wrapper">
                         <div className="filter">
                             <Accordion>
-                                <AccordionTab header="Click here to open the filters">
+                                <AccordionTab header="Filters">
                                     <button onClick={() => this.handleFilter("Characters")}><FontAwesomeIcon icon="people-group" /> Characters</button>
                                     <button onClick={() => this.handleFilter("Objects")}><FontAwesomeIcon icon="flask" /> Objects</button>
                                     <button onClick={() => this.handleFilter("Quests")}><FontAwesomeIcon icon="scroll" /> Quests</button>
