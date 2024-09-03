@@ -33,6 +33,17 @@
         }
 }
 
-@mixin form-styles {
+@mixin form-style {
     background-color: $TextFields;
+    border: none;
+    padding: 10px;
+   
+
+    &::placeholder {
+        text-align: center;
+    }
+
+    &:focus {
+        outline: 1px solid $HoverBlue;
+    }
 }

@@ -227,6 +227,19 @@ We need an API to continue with the project, so before proceeding we'll create o
 
 We'll need Axios to connect the frontend with the backend, so install it now: ``npm i axios``.
 
+## Z index to prevent FAQ overlaping
+
+To prevent the FAQ to appear above the navbar, just put the z index of the navbar higher, and that of the FAQ lower.
+
+```
+.faq-wrapper .p-accordion .p-component {
+ z-index: 500;
+}
+
+.navbar-wrapper {
+  z-index: 1000;  }
+```
+
 
 
 

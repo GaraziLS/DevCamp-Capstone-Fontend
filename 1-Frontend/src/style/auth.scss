@@ -1,0 +1,5 @@
+input {
+    @include form-style;
+    display: flex;
+    flex-flow: column;
+}

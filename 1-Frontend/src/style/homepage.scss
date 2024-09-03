@@ -2,6 +2,19 @@
 
 @media (max-width: 425px) {
 
+    h1 {
+
+  font-family: "Stoke", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 34px;
+
+}
+
+h3 {
+    text-align: center;
+}
+
 .header {
     padding-top: 15px;
 }
@@ -18,8 +31,7 @@
         grid-template-columns: 1fr;
         justify-content: center;
         align-items: center;
-        position: sticky;
-        top:23%;
+       
 
         button {
             @include button-style;
@@ -30,7 +42,7 @@
     .items-wrapper {
         display: grid;
         padding-top: 15px;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 20px;
         justify-items: center;
         align-items: center;
@@ -38,6 +50,11 @@
         .link>a {
             @include link-style;
             border-bottom: dashed 1px;
+            padding: 5px;
+
+            &:hover {
+                background-color: $TextFields;
+            }
 
         }
 
@@ -49,6 +66,18 @@
 // MEDIA QUERIES FOR DESKTOP
 
 @media (min-width: 425px) {
+
+h1 {
+
+  font-family: "Stoke", serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+h3 {
+    text-align: center;
+}
 
 .header {
     padding-top: 30px;
@@ -77,11 +106,16 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 20px;
         justify-items: center;
-        align-items: stretch;
+        align-items: center;
 
         .link>a {
             @include link-style;
             border-bottom: 1px dashed;
+
+            &:hover {
+                background-color: $TextFields;
+                padding: 5px;
+            }
         }
 
     }

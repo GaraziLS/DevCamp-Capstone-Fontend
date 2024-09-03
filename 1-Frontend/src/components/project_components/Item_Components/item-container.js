@@ -3,7 +3,8 @@ import axios from "axios";
 import SingleItem from '../Item_Components/single-item';
 import LoadingIcon from "../../../../src/helpers/loading-status";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { Accordion, AccordionTab } from 'primereact/accordion'
 
 export default class ItemContainer extends Component {
     constructor() {
@@ -66,18 +67,24 @@ export default class ItemContainer extends Component {
         } else {
             return (
                 <div className="header">
-                    <h2>Welcome to the Home of Imagination</h2>
+                    <h3>Welcome to the</h3>
+                    <h1>HOME OF IMAGINATION</h1>
                     <h5>(<NavLink className="link" exact to="/whats-this">Click here to learn how this site works</NavLink>)</h5>
 
                     <div className="homepage-wrapper">
                         <div className="filter">
-                            <button onClick={() => this.handleFilter("Characters")}><FontAwesomeIcon icon="people-group" /> Characters</button>
-                            <button onClick={() => this.handleFilter("Objects")}><FontAwesomeIcon icon="flask" /> Objects</button>
-                            <button onClick={() => this.handleFilter("Quests")}><FontAwesomeIcon icon="scroll" /> Quests</button>
-                            <button onClick={() => this.handleFilter("Skills")}><FontAwesomeIcon icon="book" /> Skills</button>
-                            <button onClick={() => this.handleFilter("World")}><FontAwesomeIcon icon="earth-europe" /> World</button>
-                            <button onClick={() => this.handleFilter("Other")}><FontAwesomeIcon icon="box-open" /> Other</button>
-                            <button onClick={() => this.handleFilter("Filter All")}><FontAwesomeIcon icon="broom" /> Filter All</button>
+                            <Accordion>
+                                <AccordionTab header="Click here to open the filters">
+                                    <button onClick={() => this.handleFilter("Characters")}><FontAwesomeIcon icon="people-group" /> Characters</button>
+                                    <button onClick={() => this.handleFilter("Objects")}><FontAwesomeIcon icon="flask" /> Objects</button>
+                                    <button onClick={() => this.handleFilter("Quests")}><FontAwesomeIcon icon="scroll" /> Quests</button>
+                                    <button onClick={() => this.handleFilter("Skills")}><FontAwesomeIcon icon="book" /> Skills</button>
+                                    <button onClick={() => this.handleFilter("World")}><FontAwesomeIcon icon="earth-europe" /> World</button>
+                                    <button onClick={() => this.handleFilter("Other")}><FontAwesomeIcon icon="box-open" /> Other</button>
+                                    <button onClick={() => this.handleFilter("Filter All")}><FontAwesomeIcon icon="filter" /> Filter All</button>
+                                </AccordionTab>
+                                </Accordion>
+                            
                         </div>
                         <div className="items-wrapper link">{this.singleGenerator()}</div>
                     </div>

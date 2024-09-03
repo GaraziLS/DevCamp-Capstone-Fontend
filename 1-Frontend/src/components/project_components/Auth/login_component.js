@@ -71,7 +71,7 @@ export default class LoginComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login-wrapper">
                 <h2>Log in</h2>
                 <div>{this.state.errorText}</div>
 

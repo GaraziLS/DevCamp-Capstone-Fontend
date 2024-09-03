@@ -15,14 +15,16 @@
 
         .navlink-wrapper {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            padding: 5px;
+            font-size: 8px;
 
             .link {
                 @include link-style;
-                font-size: 15px;
+                font-size: 11px;
             }
 
             .active-link {
@@ -46,7 +48,7 @@
                 input {
                     background-color: $SearchBar;
                     border: none;
-                    padding: 5px;
+                    padding: 2px;
                     align-self: center;
                 }
 
@@ -57,7 +59,7 @@
                 input::placeholder {
                     text-align: center;
                     color: black;
-                    font-size: 13px;
+                    font-size: 10px;
                     font-weight: 450;
                 }
             }
@@ -100,11 +102,12 @@
 
             button {
                 @include button-style;
-                padding: 5px;
+                padding: 3px;
 
                 .link {
                     @include link-style;
                     color: white;
+                    font-size: 10px;
 
                     &:hover {
                         color: $BackgroundWhite;

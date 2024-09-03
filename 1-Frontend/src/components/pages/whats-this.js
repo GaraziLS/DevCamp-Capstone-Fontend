@@ -13,9 +13,12 @@ export default function AboutThis() {
                 <p>Considerations to navigate the site without bugs:
 
                         <ul>
-                            <li>For some reason, when the chrome console is open and you're on the error page (when trying to access the creation page but you're unlogged) the login button doesn't respond. Use the link in that page instead.</li>
+                            <li>For some reason, when the chrome console is open and you're on the error page (when trying to access the creation page but you're unlogged) the login button doesn't respond sometimes. Use the link in that page instead.</li>
                             <br></br>
                             <li>When the console is open and you refresh the page to see the changes that were made, the connection will be refused despite having wifi available. Re-start the server or close the console and reload the page to fix the issue.</li>
+                            <br></br>
+                            <br></br>
+                            When you edit a generator and click save, if you want to edit it again the form will show the original content, but if you go to that item in the homepage the content will be updated. To avoid this bug and show always the updated content in the creation page, refresh the site. When you return to the creation page, if you try to edit that item the updated content will show up. 
                         </ul></p>
                 </p>
 
