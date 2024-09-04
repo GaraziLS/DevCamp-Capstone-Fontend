@@ -12,9 +12,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr; 
             grid-template-rows: 0.1fr 0.5fr 0.1fr;
-            gap: 30px;
-            position: sticky;
-            top: 20%;
+            gap: 20px;
 
             .form-field {
                 @include form-style;
@@ -46,5 +44,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+
+        .generator-list-btn {
+            @include button-style;
+        }
     }
 }
