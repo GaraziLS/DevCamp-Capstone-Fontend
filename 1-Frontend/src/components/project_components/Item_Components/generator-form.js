@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class GeneratorForm extends Component {
     constructor(props) {
@@ -93,8 +94,9 @@ export default class GeneratorForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="creation-form-wrapper">
                     <input
+                        className="form-field name-field"
                         type="text"
                         name="item_title"
                         placeholder="Generator name"
@@ -103,6 +105,7 @@ export default class GeneratorForm extends Component {
                         onChange={this.handleChange}
                     />
                     <select
+                        className="form-field category-field"
                         name="item_category"
                         label="item_category"
                         value={this.state.item_category}
@@ -115,16 +118,15 @@ export default class GeneratorForm extends Component {
                         <option value="World" label="World">World</option>
                         <option value="Other" label="Other">Other</option>
                     </select>
-                    <div>
-                        <textarea
-                            name="item_content"
-                            placeholder="Write your generator's content here. Use commas (,) to separate values, please."
-                            label="Write your generator's content here. Use commas (,) to separate values, please."
-                            value={this.state.item_content}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <button type="submit">Save generator</button>
+                    <textarea
+                        className="form-field data-field"
+                        name="item_content"
+                        placeholder="Write your generator's content here. Use commas (,) to separate values, please."
+                        label="Write your generator's content here. Use commas (,) to separate values, please."
+                        value={this.state.item_content}
+                        onChange={this.handleChange}
+                    />
+                    <button type="submit" className="creation-button"><FontAwesomeIcon icon="floppy-disk"/> Save Generator</button>
                 </form>
             </div>
         );
