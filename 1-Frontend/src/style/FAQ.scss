@@ -4,6 +4,7 @@
 
 .p-accordion-header-text {
     @include link-style;
+    font-size: 20px;
 
     &:hover {
         background-color: $TextFields;

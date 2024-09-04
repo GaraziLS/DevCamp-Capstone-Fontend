@@ -12,6 +12,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
+
                 <h3><LoadingIcon /></h3>
 
                 <SignupComponent/>

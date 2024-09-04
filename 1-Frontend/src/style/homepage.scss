@@ -23,6 +23,14 @@ h3 {
 
     .p-accordion-header-text {
         text-align: center;
+        color: $HoverBlue;
+         font-size: 18px;
+
+        &:hover {
+            color: $MainColor;
+            background-color: $TextFields;
+            padding: 5px;
+        }
     }
     
     .p-icon .p-accordion-toggle-icon {
@@ -63,6 +71,7 @@ h3 {
 
             &:hover {
                 background-color: $TextFields;
+                padding: 5px;
             }
 
         }
@@ -103,6 +112,15 @@ h3 {
 
     .p-accordion-header-text {
         text-align: center;
+        color: $HoverBlue;
+        font-size: 18px;
+
+        &:hover {
+            color: $MainColor;
+            background-color: $TextFields;
+            padding: 5px;
+
+        }
     }
     
     .p-icon .p-accordion-toggle-icon {
@@ -113,6 +131,7 @@ h3 {
         display: flex;
         gap: 20px;
         padding-top: 10px;
+        
     }
 
         .filter {
@@ -139,7 +158,7 @@ h3 {
         .link>a {
             @include link-style;
             border-bottom: 1px dashed;
-
+            
             &:hover {
                 background-color: $TextFields;
                 padding: 5px;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class SignupComponent extends Component {
     constructor(props) {
@@ -31,8 +32,12 @@ export default class SignupComponent extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <h2 className="header">Sign up</h2>
+
+                <form onSubmit={this.handleSubmit} className="signup-form">
+                    <FontAwesomeIcon icon="at" className="signup-icon"/>
                     <input
+                        className="form-field"
                         type="email"
                         name="email"
                         placeholder="Type your email"
@@ -40,8 +45,10 @@ export default class SignupComponent extends Component {
                         value={this.state.email}
                         onChange={this.handleSignupChange}>
                     </input>
-
+                    
+                    <FontAwesomeIcon icon="user" className="signup-icon"/>
                     <input
+                        className="form-field"
                         type="text"
                         name="username"
                         placeholder="Type your username"
@@ -50,7 +57,9 @@ export default class SignupComponent extends Component {
                         onChange={this.handleSignupChange}>
                     </input>
 
+                    <FontAwesomeIcon icon="key" className="signup-icon"/>
                     <input
+                        className="form-field"
                         type="password"
                         name="password"
                         placeholder="Type your password"
@@ -58,8 +67,8 @@ export default class SignupComponent extends Component {
                         value={this.state.password}
                         onChange={this.handleSignupChange}>
                     </input>
+                    <button type="submit" className="signup-button">Sign up</button>
                 </form>
-                <button type="submit">Sign up</button>
             </div>
         );
     };

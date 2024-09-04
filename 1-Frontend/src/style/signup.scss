@@ -1,6 +1,4 @@
-
-
-// Login layout
+// Sign up layout desktop
 
 .header {
     padding-top: 30px;
@@ -10,16 +8,16 @@
     font-size: 35px;
 }
 
-.auth-form {
+.signup-form {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 0fr 0.1fr;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding-top: 40px;
+    padding-top: 30px;
 
-    .auth-icon {
+    .signup-icon {
         gap: -50px;
         align-items: flex-start;
         justify-self: flex-start;
@@ -31,13 +29,11 @@
         @include form-style;
         align-self: center;
         justify-self: center;
-
         }
 
 button {
-    @include button-style;
-        grid-column: span 2;
-        margin-top: 10px;
-}
-
+     @include button-style;
+     grid-column: span 2;
+     margin-top: 10px;
+    }
 }
