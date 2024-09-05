@@ -1,3 +1,15 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 * {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
@@ -28,4 +40,8 @@ h6 {
 .loading-icon {
     font-size: 50px;
     color: $MainColor;
+}
+
+.app {
+    height: 100%
 }

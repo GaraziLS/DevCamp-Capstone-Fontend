@@ -1,24 +1,24 @@
 // MEDIA QUERIES FOR MOBILE
 
 @media (max-width: 425px) {
-.page-wrapper {
-    margin: 20px;
+    .page-wrapper {
+        margin: 20px;
 
-    .text-wrapper {
-        text-align: justify;
+        .text-wrapper {
+            text-align: justify;
+        }
     }
-}
 }
 
 // MEDIA QUERIES FOR DESKTOP
 
 @media (min-width: 425px) {
 
-.page-wrapper {
-    margin: 50px;
+    .page-wrapper {
+        margin: 50px;
 
-    .text-wrapper {
-        text-align: justify;
+        .text-wrapper {
+            text-align: justify;
+        }
     }
-}
 }

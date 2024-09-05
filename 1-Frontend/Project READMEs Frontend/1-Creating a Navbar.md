@@ -2,11 +2,15 @@
 
 This project is the DevCamp Full Stack Capstone project, and this document will explain how all the programming is done. The frontend is built using React, and the backend using Flask. All the icons have text by their side, to allow screen readers work and to make the site accessible to everyone. 
 
+The site is fully responsive. Some pages, such as the login or the generators, don't have media queries because there are few elements there and they already look good during tests.
+
 ### Considerations to navigate the site without bugs
 
 * For some reason, when the chrome console is open and you're on the error page (when trying to access the creation page but you're unlogged) the login button doesn't respond. Use the link in that page instead.
 
 * When the console is open and you refresh the page to see the changes that were made, the connection will be refused despite having wifi available. Re-start the server or close the console and reload the page to fix the issue.
+
+* When seeing the page from the responsive mobile view in Chrome, the log in gets refused. Exit the console and log in from the outside to fix the bug.
 
 
 ## First Steps: Building a Navbar
@@ -240,6 +244,9 @@ To prevent the FAQ to appear above the navbar, just put the z index of the navba
   z-index: 1000;  }
 ```
 
+## Adding a footer
+
+Taking the navbar as the base, we'll add a footer. We'll add some info there, and it's gonna be a functional component, such as the year. To add a date, 
 
 
 
