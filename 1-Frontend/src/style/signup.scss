@@ -1,7 +1,7 @@
 // Sign up layout desktop
 
 .header {
-    padding-top: 30px;
+    padding-top: 20px;
     font-family: "Stoke", serif;
     font-weight: 400;
     font-style: normal;
@@ -29,11 +29,11 @@
         @include form-style;
         align-self: center;
         justify-self: center;
-        }
+    }
 
-button {
-     @include button-style;
-     grid-column: span 2;
-     margin-top: 10px;
+    button {
+        @include button-style;
+        grid-column: span 2;
+        margin-top: 10px;
     }
 }

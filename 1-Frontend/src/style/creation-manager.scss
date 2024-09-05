@@ -1,4 +1,4 @@
-// MEDIA QUERIES FOR DESKTOP
+// MEDIA QUERIES FOR MOBILE
 
 @media (max-width: 425px) {
 
@@ -83,7 +83,7 @@
 
     .creation-manager-wrapper {
         display: grid;
-        height: 700px;
+        height: 30vh;
         grid-template-rows: 1fr 1fr;
         padding: 25px;
 
@@ -124,10 +124,12 @@
 
         .lower-part-wrapper {
             display: grid;
+            height: 100vh;
             grid-template-columns: 1fr 1fr 1fr;
             justify-content: center;
             align-content: center;
-            padding: 20px;
+            padding: 40px;
+            overflow: hidden;
 
             .buttons {
                 display: flex;

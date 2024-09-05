@@ -15,10 +15,8 @@ export default class Signup extends Component {
 
                 <h3><LoadingIcon /></h3>
 
-                <SignupComponent/>
-
-                {/* <h2>This feature will be available once the project is delivered.</h2>
-                <h3><NavLink exact to="/" className="link" activeClassName="active-link" >Return to homepage</NavLink> </h3> */}
+                <h2>This feature will be available once the project is delivered.</h2>
+                <h3><NavLink exact to="/" className="link" activeClassName="active-link" >Return to homepage</NavLink> </h3>
             </div>
         );
     };

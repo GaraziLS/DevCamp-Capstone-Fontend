@@ -8,13 +8,16 @@
     overflow: hidden;
 
 
-    .footer-item-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
 
-        .footer-item {
-            align-items: center;
-        }
+    .footer-item-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 
+    .footer-item {
+        padding: 0px 40px;
+    }
 }
