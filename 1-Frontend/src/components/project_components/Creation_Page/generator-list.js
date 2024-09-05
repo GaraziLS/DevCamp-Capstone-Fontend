@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class GeneratorList extends Component {
     constructor(props) {
@@ -15,13 +16,13 @@ export default class GeneratorList extends Component {
             <div>
                 <div className="item-list-wrapper">
                     <div className="items-in-list">
-                        <h2>{this.state.RawData.item_id}</h2>
-                        <h2>{this.state.RawData.item_title}</h2>
+                        <h4>{this.state.RawData.item_id}</h4>
+                        <h4>{this.state.RawData.item_title}</h4>
                     </div>
 
                     <div className="buttons">
-                        <button className="generator-list-btn" onClick={() => this.props.handleEditItem(this.state.RawData)}>Edit</button>
-                        <button className="generator-list-btn" onClick={() => this.props.handleDeleteItem(this.state.RawData)}>Delete</button>
+                        <button className="generator-list-btn" onClick={() => this.props.handleEditItem(this.state.RawData)}><FontAwesomeIcon icon="pen-to-square"/> Edit</button>
+                        <button className="generator-list-btn" onClick={() => this.props.handleDeleteItem(this.state.RawData)}><FontAwesomeIcon icon="trash"/> Delete</button>
                     </div>
                 </div>
             </div>
