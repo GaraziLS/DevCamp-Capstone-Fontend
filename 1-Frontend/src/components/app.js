@@ -12,7 +12,7 @@ import ProfilePage from "./pages/user-profile"
 
 import Navbar from "./project_components/navbar";
 import Icons from "../helpers/icons";
-import Footer from "./project_components/footer"
+
 
 
 export default class App extends Component {
@@ -77,8 +77,6 @@ export default class App extends Component {
             <Route component={ErrorPage} />
           </Switch>
         </Router>
-
-        <Footer/>
       </div>
     );
   };

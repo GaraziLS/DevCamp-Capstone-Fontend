@@ -39,7 +39,7 @@
 
         .p-accordion-content {
             display: grid;
-            padding-top: 30px;
+            padding-top: auto;
         }
 
 
@@ -97,7 +97,7 @@
 
     h3 {
         text-align: center;
-        padding-top: 40px;
+        padding-top: auto;
     }
 
 
@@ -130,7 +130,7 @@
         .p-accordion-content {
             display: flex;
             gap: 20px;
-            padding-top: 10px;
+            padding-top: auto;
 
         }
 

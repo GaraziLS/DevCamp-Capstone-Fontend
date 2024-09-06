@@ -1,10 +1,10 @@
 .faq-wrapper .p-accordion .p-component {
- z-index: 500;
+    z-index: 500;
 }
 
 .p-accordion-header-text {
     @include link-style;
-    font-size: 20px;
+    font-size: 15px;
 
     &:hover {
         background-color: $TextFields;

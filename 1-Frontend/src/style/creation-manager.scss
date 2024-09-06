@@ -4,8 +4,8 @@
 
     .creation-manager-wrapper {
         display: grid;
-        height: 10vh;
-        grid-template-rows: 1fr 1fr;
+        height: 100vh;
+        grid-template-rows: 0.5fr 1fr;
         padding: 10px;
 
         .upper-part-wrapper {
@@ -14,7 +14,7 @@
 
             .creation-form-wrapper {
                 display: grid;
-                grid-template-columns: 0.3fr 0.3r;
+                grid-template-columns: 0.3fr 0.3fr;
                 grid-template-rows: 0.1fr 0.5fr 0.1fr;
                 gap: 10px;
 

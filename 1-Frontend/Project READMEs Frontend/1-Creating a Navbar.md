@@ -244,9 +244,6 @@ To prevent the FAQ to appear above the navbar, just put the z index of the navba
   z-index: 1000;  }
 ```
 
-## Adding a footer
-
-Taking the navbar as the base, we'll add a footer. We'll add some info there, and it's gonna be a functional component, such as the year. To add a date, 
 
 
 

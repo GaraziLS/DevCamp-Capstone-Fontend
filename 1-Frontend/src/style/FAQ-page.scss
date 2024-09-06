@@ -14,8 +14,12 @@
 
 @media (min-width: 425px) {
 
+    .header {
+        padding-top: 10px;
+    }
+
     .page-wrapper {
-        margin: 50px;
+        margin: 20px;
 
         .text-wrapper {
             text-align: justify;
