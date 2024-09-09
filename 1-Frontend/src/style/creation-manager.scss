@@ -85,7 +85,7 @@
         display: grid;
         height: 30vh;
         grid-template-rows: 1fr 1fr;
-        padding: 25px;
+        padding: 10px;
 
         .upper-part-wrapper {
             justify-content: flex-start;
@@ -128,14 +128,19 @@
             grid-template-columns: 1fr 1fr 1fr;
             justify-content: center;
             align-content: center;
-            padding: 40px;
-            overflow: hidden;
+            padding: 25px;
+            margin-top: 15px;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .buttons {
                 display: flex;
                 justify-content: center;
                 align-content: center;
-                gap: 15px;
+                gap: 10px;
 
 
                 .generator-list-btn {

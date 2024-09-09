@@ -9,6 +9,7 @@ export default function() {
     <AccordionTab header="What's this site about?">
         <p className="accordion-item">
              <p>The site lets you to use, create, edit and delete random generators and its aim is to help roleplayers and writers with their stories, giving them ideas. The program will pick a random item among the available data. For example, let's say that you have a generator that contains color names: blue, red, green, yellow, black, white, pink and orange. The program automatically picks one value randomly from that list (click the Roll! button to pick a value, or just refresh the page) and whenever you refresh the page another random result is chosen. Everyone can use a generator, even if you're unlogged, but you'll need to be logged in to create and manage your own generators.</p>
+            <img src="https://i.postimg.cc/LsCXRKJP/homepage.jpg" alt="Homepage. Below the filters there are individual links that point to the generators"></img>
         </p>
     </AccordionTab>
                 
@@ -20,7 +21,9 @@ export default function() {
                 
     <AccordionTab header="How do I search for items?">
         <p className="accordion-item">
-            Just start typing in the search bar and the found coincidences will appear. Click on a link (the grid of names that's in the homepage) and you'll be redirected to its page. If no results are found you'll be offered the chance of creating a new generator.
+            Just start typing in the search bar and the found coincidences will appear. Click on a result and you'll be redirected to its page. If no results are found you'll be offered the chance of creating a new generator.
+            <img src="https://i.postimg.cc/NjY476rb/search.png" alt="Search bar with found results"></img>
+            <img src="https://i.postimg.cc/MK15QPXv/resultnotfound.png" alt="Search bar with result not found message"></img>
         </p>
     </AccordionTab>
                 
@@ -60,12 +63,14 @@ export default function() {
     <AccordionTab header="How do I create a generator?">
         <p className="accordion-item">
             You need to be logged in to create a generator. After logging in, you'll see that a couple of new links have appeared at the top of the page. Click on the Create page and choose a name and a category for the generator and enter the values separated by commas (,). Click the Save Generator button. Now it will appear in the homepage, as well as in this Create page.
+             <img src="https://i.postimg.cc/6QpfFBcv/create.png" alt="Creation Page"></img>
         </p>
     </AccordionTab>
                 
     <AccordionTab header="How do I modify my generator?">
         <p className="accordion-item">
             Log in and go to the Create page. Below the creation form you'll find all the generators. Click on the edit button of the generator you want to modify and scroll up to the form, you'll see that it's filled with that generator's data. Make any changes you need, click save and it's done!
+            <img src="https://i.postimg.cc/dVB9Wh2F/edit.png" alt="Form with populated data"></img>
         </p>
     </AccordionTab>
                 
