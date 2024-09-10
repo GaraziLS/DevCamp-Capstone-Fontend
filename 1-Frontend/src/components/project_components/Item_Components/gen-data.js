@@ -21,7 +21,7 @@ export default class GenData extends Component {
         if (!this.props.item_id) {
             this.setState({ error: "Item ID is missing", loading: false });
         } else {
-            axios.get(`http://localhost:5000/tables/${this.props.item_id}`)
+            axios.get(`https://devcamp-fullstack-project-backend.onrender.com/tables/${this.props.item_id}`)
                 .then(response => {
                     const data = response.data;
                     const contentArray = data.item_content.split(","); // Split the item_content into an array

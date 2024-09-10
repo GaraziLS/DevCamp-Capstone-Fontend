@@ -28,7 +28,7 @@ export default class ItemContainer extends Component {
     // API Connections
 
     getAllTables() {
-        axios.get("http://localhost:5000/tables")
+        axios.get("https://devcamp-fullstack-project-backend.onrender.com/tables")
             .then(response => {
                 this.setState({ data: response.data, isLoading: false })
             }).catch(error => {

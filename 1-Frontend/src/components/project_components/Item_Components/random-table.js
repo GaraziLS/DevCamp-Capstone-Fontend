@@ -16,7 +16,7 @@ export default class RandomTable extends Component {
     }
 
     getTable(item_id) {
-        axios.get("http://localhost:5000/tables/" + item_id)
+        axios.get("https://devcamp-fullstack-project-backend.onrender.com/tables/" + item_id)
             .then(response => {
                 this.setState({ RandomTableContent: response.data });
                 const { RandomTableContent } = this.state
